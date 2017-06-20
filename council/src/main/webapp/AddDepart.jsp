@@ -1,0 +1,29 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<div class="page-content">
+<div class="page-content">
+                <div class="content-nav">
+                    人员管理 > 部门管理
+                </div>
+                <form>
+
+<fieldset>
+	<legend>添加部门</legend>
+	部门名称:&#12288;&#12288;&#12288;&#12288;<input type="text" id="manager_id"
+		maxlength="10" /> <br /> 部门管理人姓名:&#12288;<input type="text"
+		id="depart_name" maxlength="10" /><br />
+	<input type ="submit" class="clickbutton" value="添加" />
+</fieldset>
+<table class="departtable">
+</form>
+
+
+</head>
+<body>
+
+</body>
+</html>
