@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop" 
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:tx="http://www.springframework.org/schema/tx" 
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+         http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context-4.2.xsd
+         http://www.springframework.org/schema/tx
+         http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
+         http://www.springframework.org/schema/aop 
+         http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+         http://www.springframework.org/schema/mvc 
+         http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+         http://www.springframework.org/schema/data/jpa  
+         http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+         
+    <!-- 打开Spring的Annotation支持 -->
+    <context:annotation-config />
+    <!-- 设定Spring 去哪些包中找Annotation -->
+    <context:component-scan base-package="cn.edu.bjut.sse" />
+
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">  
+        <property name="dataSource" ref="dataSource" />
+        <property name="packagesToScan" value="cn.edu.bjut.sse.domain" />
+        <property name="jpaVendorAdapter">  
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">  
+                <property name="showSql" value="true"></property>  
+                <property name="databasePlatform" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+            </bean>  
+        </property>
+        <property name="jpaDialect">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
+        </property>
+        <property name="jpaPropertyMap">
+            <map>
+                <entry key="hibernate.query.substitutions" value="true 1, false 0" />
+                <entry key="hibernate.default_batch_fetch_size" value="16" />
+                <entry key="hibernate.max_fetch_depth" value="2" />
+                <entry key="hibernate.generate_statistics" value="true" />
+                <entry key="hibernate.bytecode.use_reflection_optimizer" value="true" />
+                <entry key="hibernate.cache.use_second_level_cache" value="false" />
+                <entry key="hibernate.cache.use_query_cache" value="false" />
+            </map>
+        </property>  
+    </bean>  
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"  destroy-method="close">
+        <!-- 配置连接池的驱动名，地址，username，password -->
+        <property name="driverClassName" value="${jdbc.driverClassName}" />
+        <property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+        <!-- 配置连接池的初始值 -->
+        <property name="initialSize" value="${jdbc.initialSize}" />
+        <!-- 当最小空闲时，当连接少于minIdle时会自动去申请一些连接 -->
+        <property name="minIdle" value="${jdbc.minIdle}" />
+        <!-- 最大空闲时，当经过一个高峰之后，连接池可以将一些用不到的连接释放，一直减少到maxIdle为止 -->
+        <property name="maxIdle" value="${jdbc.maxIdle}" />
+        <property name="maxWaitMillis" value="${jdbc.maxWaitMillis}" />
+    </bean>
+    <!-- 导入Src目录下的jdbc.properties文件 -->
+    <context:property-placeholder location="config/jdbc.properties" />
+    <!-- 配置Spring的事务处理 -->
+     <!-- 配置事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+    <!-- 启用 annotation事务 -->
+    <tx:annotation-driven transaction-manager="transactionManager" />
+    <jpa:repositories base-package="cn.edu.bjut.sse.dao" entity-manager-factory-ref="entityManagerFactory" transaction-manager-ref="transactionManager"/>
+</beans>
