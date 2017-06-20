@@ -1,4 +1,4 @@
-package bjut.sse.council.entity;
+package sse.bjut.council.entity;
 
 import java.io.Serializable;
 
@@ -8,10 +8,10 @@ import javax.persistence.*;
 @Table(name="t_staff_info")
 
 @NamedQueries ( {
-  @NamedQuery ( name="StaffInfo.countAll", query="SELECT COUNT(x) FROM StaffInfo x" )
+  @NamedQuery ( name="Staff.countAll", query="SELECT COUNT(x) FROM Staff x" )
 } )
 
-public class StaffInfo implements Serializable{
+public class Staff implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
@@ -29,28 +29,28 @@ public class StaffInfo implements Serializable{
     @Column(name="depart_id", nullable=false,length=4)
 	String departID;
 
-    @Column(name="email", nullable=false,length=30)
+    @Column(name="email", nullable=false, length=30)
 	String email;
     
-    @Column(name="name", nullable=false,length=10)
+    @Column(name="name", nullable=false, length=10)
 	String name;
     
-    @Column(name="phone", nullable=false,length=13)
+    @Column(name="phone", nullable=false, length=13)
 	Integer phone;
     
     @Column(name="state", nullable=false)
-	Boolean state;
+	Boolean state = false;
     
     @Column(name="del_flag", nullable=false)
-	Boolean del_flag;    
+	Boolean delFlag = false;    
     
     @Column(name="stop_flag", nullable=false)
-	Boolean stop_flag;
+	Boolean stopFlag = false;
     
     //-----------------------------------------------
     // CONSTRUCTOR(S)
     //-----------------------------------------------
-    public StaffInfo(){ super(); }
+    public Staff(){ super(); }
     
     //-----------------------------------------------
     // GETTER & SETTER FOR THE KEY FIELD
@@ -103,20 +103,20 @@ public class StaffInfo implements Serializable{
 		this.state = state;
 	}
 
-	public Boolean getDel_flag() {
-		return del_flag;
+	public Boolean getDelFlag() {
+		return delFlag;
 	}
 
-	public void setDel_flag(Boolean del_flag) {
-		this.del_flag = del_flag;
+	public void setDelFlag(Boolean delFlag) {
+		this.delFlag = delFlag;
 	}
 
-	public Boolean getStop_flag() {
-		return stop_flag;
+	public Boolean getStopFlag() {
+		return stopFlag;
 	}
 
-	public void setStop_flag(Boolean stop_flag) {
-		this.stop_flag = stop_flag;
+	public void setStopFlag(Boolean stopFlag) {
+		this.stopFlag = stopFlag;
 	}
 
 	//-----------------------------------------------
@@ -124,8 +124,7 @@ public class StaffInfo implements Serializable{
     //-----------------------------------------------
 	@Override
 	public String toString() {
-		return "StaffInfo [id=" + id + ", departID=" + departID + ", email=" + email + ", name=" + name + ", phone="
-				+ phone + ", state=" + state + ", del_flag=" + del_flag + ", stop_flag=" + stop_flag + "]";
+		return "Staff [id=" + id + ", departID=" + departID + ", email=" + email + ", name=" + name + ", phone="
+				+ phone + ", state=" + state + ", delFlag=" + delFlag + ", stopFlag=" + stopFlag + "]";
 	}
 }
-

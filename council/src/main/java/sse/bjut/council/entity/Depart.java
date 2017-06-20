@@ -1,4 +1,4 @@
-package bjut.sse.council.entity;
+package sse.bjut.council.entity;
 
 import java.io.Serializable;
 
@@ -8,10 +8,10 @@ import javax.persistence.*;
 @Table(name="t_depart_info")
 
 @NamedQueries ( {
-  @NamedQuery ( name="DepartInfo.countAll", query="SELECT COUNT(x) FROM DepartInfo x" )
+  @NamedQuery ( name="Depart.countAll", query="SELECT COUNT(x) FROM Depart x" )
 } )
 
-public class DepartInfo implements Serializable{
+public class Depart implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
@@ -27,18 +27,18 @@ public class DepartInfo implements Serializable{
     // ENTITY DATA FIELDS
     //-----------------------------------------------
     @Column(name="manager_id", nullable=false,length=10)
-	String managerID;
+    Integer managerID;
     
     @Column(name="depart_name", nullable=false,length=10)
 	String departName;
     
     @Column(name="del_flag", nullable=false)
-	Boolean del_flag;    
+	Boolean delFlag  = false;    
     
     //-----------------------------------------------
     // CONSTRUCTOR(S)
     //-----------------------------------------------
-    public DepartInfo(){ super(); }
+    public Depart(){ super(); }
     
     //-----------------------------------------------
     // GETTER & SETTER FOR THE KEY FIELD
@@ -51,11 +51,11 @@ public class DepartInfo implements Serializable{
 		this.id = id;
 	}
 
-	public String getManagerID() {
+	public Integer getManagerID() {
 		return managerID;
 	}
 
-	public void setManagerID(String managerID) {
+	public void setManagerID(Integer managerID) {
 		this.managerID = managerID;
 	}
 
@@ -67,12 +67,12 @@ public class DepartInfo implements Serializable{
 		this.departName = departName;
 	}
 
-	public Boolean getDel_flag() {
-		return del_flag;
+	public Boolean getDelFlag() {
+		return delFlag;
 	}
 
-	public void setDel_flag(Boolean del_flag) {
-		this.del_flag = del_flag;
+	public void setDelFlag(Boolean delFlag) {
+		this.delFlag = delFlag;
 	}
 
 	//-----------------------------------------------
@@ -80,9 +80,8 @@ public class DepartInfo implements Serializable{
     //-----------------------------------------------
 	@Override
 	public String toString() {
-		return "DepartInfo [id=" + id + ", managerID=" + managerID + ", departName=" + departName + ", del_flag="
-				+ del_flag + "]";
+		return "Depart [id=" + id + ", managerID=" + managerID + ", departName=" + departName + ", delFlag="
+				+ delFlag + "]";
 	}
 
 }
-

@@ -8,7 +8,7 @@
        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd">
 
     <!--指明 controller 所在包，并扫描其中的注解-->
-    <context:component-scan base-package="cn.edu.bjut.sse.controller"/>
+    <context:component-scan base-package="sse.bjut.council.controller"/>
     
     <!-- 静态资源(js、image等)的访问 -->
     <mvc:default-servlet-handler/>
