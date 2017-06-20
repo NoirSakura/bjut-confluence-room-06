@@ -23,11 +23,11 @@
     <!-- 打开Spring的Annotation支持 -->
     <context:annotation-config />
     <!-- 设定Spring 去哪些包中找Annotation -->
-    <context:component-scan base-package="cn.edu.bjut.sse" />
+    <context:component-scan base-package="bjut.sse.council" />
 
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">  
         <property name="dataSource" ref="dataSource" />
-        <property name="packagesToScan" value="cn.edu.bjut.sse.domain" />
+        <property name="packagesToScan" value="bjut.sse.council.entity" />
         <property name="jpaVendorAdapter">  
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">  
                 <property name="showSql" value="true"></property>  
@@ -72,5 +72,5 @@
     </bean>
     <!-- 启用 annotation事务 -->
     <tx:annotation-driven transaction-manager="transactionManager" />
-    <jpa:repositories base-package="cn.edu.bjut.sse.dao" entity-manager-factory-ref="entityManagerFactory" transaction-manager-ref="transactionManager"/>
+    <jpa:repositories base-package="bjut.sse.council.dao" entity-manager-factory-ref="entityManagerFactory" transaction-manager-ref="transactionManager"/>
 </beans>
