@@ -24,10 +24,11 @@ public class MainController {
 	@RequestMapping("/index")
     public String index() { 
 		Depart info = new Depart();
-		info.setDepartName("123");
+		info.setDepartName("124");
 		info.setManagerID(124);
-		departInfoDao.save(info);
-		return "success"; 
+		//departInfoDao.save(info);;
+		return departInfoDao.findByDepartName("123").toString() +
+				departInfoDao.findByManagerID(124); 
 		}
 	
 }
