@@ -43,7 +43,7 @@ public class LoginInfo implements Serializable{
 	String password;
     
     @Column(name="last_login_time", nullable=false)
-	Date lastloginTime;
+	Date lastLoginTime;
     
     @Column(name="privilege", nullable=false)
     Boolean privilege  = false;    
@@ -92,12 +92,12 @@ public class LoginInfo implements Serializable{
 		this.password = password;
 	}
 
-	public Date getLastloginTime() {
-		return lastloginTime;
+	public Date getLastLoginTime() {
+		return lastLoginTime;
 	}
 
-	public void setLastloginTime(Date lastloginTime) {
-		this.lastloginTime = lastloginTime;
+	public void setLastLoginTime(Date lastLoginTime) {
+		this.lastLoginTime = lastLoginTime;
 	}
 
 	public Boolean getPrivilege() {
@@ -122,6 +122,6 @@ public class LoginInfo implements Serializable{
 	@Override
 	public String toString() {
 		return "LoginInfo [id=" + id + ", staffId=" + staffId + ", account=" + account + ", password=" + password
-				+ ", lastloginTime=" + lastloginTime + ", privilege=" + privilege + ", delFlag=" + delFlag + "]";
+				+ ", lastLoginTime=" + lastLoginTime + ", privilege=" + privilege + ", delFlag=" + delFlag + "]";
 	}
 }
