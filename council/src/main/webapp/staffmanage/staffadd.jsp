@@ -13,20 +13,20 @@
                 <div class="content-nav">
                     人员管理 > 员工注册
                 </div>
-                <form id="staffform">
+                <form id="staff_form">
                     <fieldset>
                         <legend>员工信息</legend>
-                        <table class="stafftable" style="width:50%">
+                        <table class="staff_table" style="width:50%">
                             <tr>
                                 <td>姓名：</td>
                                 <td>
-                                    <input type="text" id="staffname" maxlength="20"/>
+                                    <input type="text" id="staff_name" maxlength="20"/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>账户名：</td>
                                 <td>
-                                    <input type="text" id="accountname" maxlength="20"/>
+                                    <input type="text" id="account_name" maxlength="20"/>
                                 </td>
                             </tr>
                             <tr>
@@ -38,25 +38,29 @@
                             <tr>
                                 <td>确认密码：</td>
                                 <td>
-                                    <input type="password" id="confirmpassword" maxlength="20"/>
+                                    <input type="password" id="confirm_password" maxlength="20" onBlur="confirm()"/>
+                                </td>
+                                <td>
+                                	<div id="comfirmmessage"></div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>联系电话：</td>
                                 <td>
-                                    <input type="text" id="staffphone" maxlength="20"/>
+                                    <input type="text" id="staff_phone" maxlength="20"/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>电子邮件：</td>
                                 <td>
-                                    <input type="text" id="staffemail" maxlength="20"/>
+                                    <input type="text" id="staff_email" maxlength="20"/>
                                 </td>
                             </tr>
+                            <tr>
 							<td>所在部门：</td>
                                 <td>
-                                    <select name="departid">    
-	                                     <c:forEach items="${departlist}" var="depart">
+                                    <select name="depart_id">    
+	                                     <c:forEach items="${depart_list}" var="depart">
 	                                     	<option value="${depart.id}">${depart.name}</option>
 	                                     </c:forEach>
                                      </select>
@@ -76,8 +80,29 @@
         <div class="page-footer">
             <hr/>
             更多问题，欢迎联系<a href="mailto:webmaster@eeg.com">管理员</a>
-            <img src="include/images/footer.png" alt="CoolMeeting"/>
+            <img src="../include/images/footer.png" alt="CoolMeeting"/>
         </div>
 
 </body>
 </html>
+
+<script type="text/javascript">  
+	window.onload = function() {
+		var exe_code = 0;
+		//exe_code = ${exe_code};
+		if(exe_code==100)
+			alert("注册成功");
+		else if(exe_code==110)
+			alert("注册失败，账号名已存在");
+		
+                        
+    }
+	
+	function confirm(){
+		if (document.getElementById("password").value != document.getElementById("confirm_password").value) {
+			comfirmmessage.innerHTML = "<font color=red>两次输入的密码不相符</font>";
+		} else {
+			comfirmmessage.innerHTML = "<font color=green>确认密码正确</font>";
+		}
+	}
+</script>
