@@ -13,12 +13,11 @@
 
 <fieldset>
 	<legend>添加部门</legend>
-	部门名称:&#12288;&#12288;&#12288;&#12288;<input type="text" id="manager_id"
-		maxlength="10" /> <br /> 部门管理人姓名:&#12288;<input type="text"
-		id="depart_name" maxlength="10" /><br />
+	部门名称:<input type="text" id="depart_name"
+		maxlength="10" /> 
 	<input type ="submit" class="clickbutton" value="添加" />
 </fieldset>
-<table class="departtable">
+<table class="depart_table">
 </form>
 
 
