@@ -33,8 +33,11 @@ public class Council implements Serializable{
     //-----------------------------------------------
     // ENTITY DATA FIELDS
     //-----------------------------------------------
+    @Column(name="council_room_id", nullable=false, length=4)
+    Integer councilRoomID;
+    
     @Column(name="reserve_id", nullable=false, length=10)
-    Integer reserveId;
+    Integer reserveID;
     
     @Column(name="name", nullable=false, length=45)
 	String name;
@@ -69,11 +72,17 @@ public class Council implements Serializable{
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Integer getReserveId() {
-		return reserveId;
+	public Integer getCouncilRoomID() {
+		return councilRoomID;
 	}
-	public void setReserveId(Integer reserveId) {
-		this.reserveId = reserveId;
+	public void setCouncilRoomID(Integer councilRoomID) {
+		this.councilRoomID = councilRoomID;
+	}
+	public Integer getReserveID() {
+		return reserveID;
+	}
+	public void setReserveID(Integer reserveID) {
+		this.reserveID = reserveID;
 	}
 	public String getName() {
 		return name;
@@ -112,13 +121,12 @@ public class Council implements Serializable{
 		this.state = state;
 	}
 
-    
 	//-----------------------------------------------
     // toString METHOD
     //-----------------------------------------------
 	@Override
 	public String toString() {
-		return "Council [id=" + id + ", reserveId=" + reserveId + ", name=" + name + ", attendance=" + attendance
+		return "Council [id=" + id + ", councilRoomID=" + councilRoomID + ", reserveID=" + reserveID + ", name=" + name + ", attendance=" + attendance
 				+ ", startTime=" + startTime + ", endTime=" + endTime + ", info=" + info + ", state=" + state + "]";
 	}
 }

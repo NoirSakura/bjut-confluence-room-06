@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import sse.bjut.council.dao.StaffInfoDao;
 import sse.bjut.council.dao.DepartInfoDao;
@@ -31,4 +32,15 @@ public class MainController {
 				departInfoDao.findByManagerID(124); 
 		}
 	
+	@RequestMapping("/login")
+	public ModelAndView login() {
+		ModelAndView mav = new ModelAndView("login");
+		return mav;
+	}
+	
+	@RequestMapping("/logout")
+	public ModelAndView logout() {
+		ModelAndView mav = new ModelAndView("logout");
+		return mav;
+	}
 }

@@ -27,7 +27,7 @@ public class Depart implements Serializable{
     // ENTITY DATA FIELDS
     //-----------------------------------------------
     @Column(name="manager_id", nullable=false,length=10)
-    Integer managerID;
+    Integer managerID = 0;
     
     @Column(name="depart_name", nullable=false,length=10)
 	String departName;
