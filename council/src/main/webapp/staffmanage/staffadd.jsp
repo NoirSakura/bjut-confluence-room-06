@@ -20,25 +20,25 @@
                             <tr>
                                 <td>姓名：</td>
                                 <td>
-                                    <input type="text" id="staff_name" maxlength="20"/>
+                                    <input type="text" id="staff_name" maxlength="10"/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>账户名：</td>
                                 <td>
-                                    <input type="text" id="account_name" maxlength="20"/>
+                                    <input type="text" id="account_name" maxlength="30"/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>密码：</td>
                                 <td>
-                                    <input type="password" id="password" maxlength="20" placeholder="请输入6位以上的密码"/>
+                                    <input type="password" id="password" maxlength="30" placeholder="请输入6位以上的密码"/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>确认密码：</td>
                                 <td>
-                                    <input type="password" id="confirm_password" maxlength="20" onBlur="confirm()"/>
+                                    <input type="password" id="confirm_password" maxlength="30" onBlur="confirm()"/>
                                 </td>
                                 <td>
                                 	<div id="comfirmmessage"></div>
@@ -47,13 +47,13 @@
                             <tr>
                                 <td>联系电话：</td>
                                 <td>
-                                    <input type="text" id="staff_phone" maxlength="20"/>
+                                    <input type="text" id="staff_phone" maxlength="13"/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>电子邮件：</td>
                                 <td>
-                                    <input type="text" id="staff_email" maxlength="20"/>
+                                    <input type="text" id="staff_email" maxlength="30"/>
                                 </td>
                             </tr>
                             <tr>
@@ -61,7 +61,10 @@
                                 <td>
                                     <select name="depart_id">    
 	                                     <c:forEach items="${depart_list}" var="depart">
-	                                     	<option value="${depart.id}">${depart.name}</option>
+	                                     	<option value="${depart.id}" 
+	                                     		<c:if test="${depart_list.id==depart_id}">select</c:if>
+	                                     		>${depart.name}
+	                                     	</option>
 	                                     </c:forEach>
                                      </select>
                                 </td>
@@ -77,11 +80,7 @@
                 </form>
             </div>
         </div>
-        <div class="page-footer">
-            <hr/>
-            更多问题，欢迎联系<a href="mailto:webmaster@eeg.com">管理员</a>
-            <img src="../include/images/footer.png" alt="CoolMeeting"/>
-        </div>
+<%@ include file="/include/buttom.jsp"%>
 
 </body>
 </html>
