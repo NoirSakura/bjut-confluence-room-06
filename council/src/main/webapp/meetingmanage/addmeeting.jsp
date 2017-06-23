@@ -87,7 +87,12 @@
 								</option>
 							</c:forEach>
 					</select>
-							<select id="selEmployees" multiple="true">
+							<select id="selEmployees" name="staff_name">
+							<c:forEach items="${staff_list}" var="staff">
+								<option value="${staff.name}"
+									<c:if test="${staff_list.id==staff_id}">select</c:if>>${staff.name}
+								</option>
+							</c:forEach>
 							</select>
 						</div>
 						<div id="divoperator">
