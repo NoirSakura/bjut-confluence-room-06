@@ -100,7 +100,7 @@
 	function confirm(){
 		if (document.getElementById("password").value != document.getElementById("confirm_password").value) {
 			comfirmmessage.innerHTML = "<font color=red>两次输入的密码不相符</font>";
-		} else {
+		} else if(document.getElementById("password").value != null){
 			comfirmmessage.innerHTML = "<font color=green>确认密码正确</font>";
 		}
 	}

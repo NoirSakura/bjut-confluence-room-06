@@ -14,7 +14,7 @@
                 <div class="sidebar-menugroup">
                     <div class="sidebar-grouptitle">人员管理</div>
                     <ul class="sidebar-menu">
-                        <li class="sidebar-menuitem"><a href="departments.html">部门管理</></li>
+                        <li class="sidebar-menuitem"><a href="departments.html">部门管理</a></li>
                         <li class="sidebar-menuitem"><a href="../staffmanage/staffadd.jsp">员工注册</a></li>
                         <li class="sidebar-menuitem"><a href="../staffmanage/staffconfirm.jsp">注册审批</a></li>
                         <li class="sidebar-menuitem"><a href="../staffmanage/stafflist.jsp">搜索员工</a></li>
