@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
+<%@ page language="java"  import="java.util.*" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -60,9 +61,9 @@
 							<td>所在部门：</td>
                                 <td>
                                     <select name="depart_id">    
-	                                     <c:forEach items="${depart_list}" var="depart">
+	                                     <c:forEach items="${depart_list}" var="depart"  varStatus="status">
 	                                     	<option value="${depart.id}" 
-	                                     		<c:if test="${depart_list.id==depart_id}">select</c:if>
+	                                     		<c:if test="${depart_list.id==depart_id}">selected</c:if>
 	                                     		>${depart.name}
 	                                     	</option>
 	                                     </c:forEach>
@@ -100,7 +101,7 @@
 	function confirm(){
 		if (document.getElementById("password").value != document.getElementById("confirm_password").value) {
 			comfirmmessage.innerHTML = "<font color=red>两次输入的密码不相符</font>";
-		} else if(document.getElementById("password").value != null){
+		} else if(document.getElementById("password").value != ""){
 			comfirmmessage.innerHTML = "<font color=green>确认密码正确</font>";
 		}
 	}
