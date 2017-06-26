@@ -41,7 +41,7 @@
                 </table>
             </div>
         </div>
-
+	</div>
 <%@ include file="/include/buttom.jsp"%>
 
 
@@ -72,7 +72,7 @@
 			url : 'staffconfirm',
 			data : {id:staff_id,operation:'1'},
 			success : function(result) {
-				var btn=document.getElementById("btn"+staff_id);
+				var s=document.getElementById("s"+staff_id);
 				if(result=="0"){
 					s.remove(s.id);
 				}
