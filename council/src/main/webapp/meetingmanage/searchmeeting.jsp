@@ -68,96 +68,19 @@
 			<th>预定者</th>
 			<th>操作</th>
 		</tr>
-		<tr>
-			<td>业务洽谈会</td>
-			<td>第一会议室</td>
-			<td>2013-10-12 8:00</td>
-			<td>2013-10-12 12:00</td>
-			<td>2013-10-10 16:00</td>
-			<td>Jerry</td>
-			<td><a class="clickbutton" href="meetingdetails.html">查看详情</a></td>
-		</tr>
-		<tr>
-			<td>业务洽谈会</td>
-			<td>第一会议室</td>
-			<td>2013-10-12 8:00</td>
-			<td>2013-10-12 12:00</td>
-			<td>2013-10-10 16:00</td>
-			<td>Jerry</td>
-			<td><a class="clickbutton" href="meetingdetails.html">查看详情</a></td>
-		</tr>
-		<tr>
-			<td>业务洽谈会</td>
-			<td>第一会议室</td>
-			<td>2013-10-12 8:00</td>
-			<td>2013-10-12 12:00</td>
-			<td>2013-10-10 16:00</td>
-			<td>Jerry</td>
-			<td><a class="clickbutton" href="meetingdetails.html">查看详情</a></td>
-		</tr>
-		<tr>
-			<td>业务洽谈会</td>
-			<td>第一会议室</td>
-			<td>2013-10-12 8:00</td>
-			<td>2013-10-12 12:00</td>
-			<td>2013-10-10 16:00</td>
-			<td>Jerry</td>
-			<td><a class="clickbutton" href="meetingdetails.html">查看详情</a></td>
-		</tr>
-		<tr>
-			<td>业务洽谈会</td>
-			<td>第一会议室</td>
-			<td>2013-10-12 8:00</td>
-			<td>2013-10-12 12:00</td>
-			<td>2013-10-10 16:00</td>
-			<td>Jerry</td>
-			<td><a class="clickbutton" href="meetingdetails.html">查看详情</a></td>
-		</tr>
-		<tr>
-			<td>业务洽谈会</td>
-			<td>第一会议室</td>
-			<td>2013-10-12 8:00</td>
-			<td>2013-10-12 12:00</td>
-			<td>2013-10-10 16:00</td>
-			<td>Jerry</td>
-			<td><a class="clickbutton" href="meetingdetails.html">查看详情</a></td>
-		</tr>
-		<tr>
-			<td>业务洽谈会</td>
-			<td>第一会议室</td>
-			<td>2013-10-12 8:00</td>
-			<td>2013-10-12 12:00</td>
-			<td>2013-10-10 16:00</td>
-			<td>Jerry</td>
-			<td><a class="clickbutton" href="meetingdetails.html">查看详情</a></td>
-		</tr>
-		<tr>
-			<td>业务洽谈会</td>
-			<td>第一会议室</td>
-			<td>2013-10-12 8:00</td>
-			<td>2013-10-12 12:00</td>
-			<td>2013-10-10 16:00</td>
-			<td>Jerry</td>
-			<td><a class="clickbutton" href="meetingdetails.html">查看详情</a></td>
-		</tr>
-		<tr>
-			<td>业务洽谈会</td>
-			<td>第一会议室</td>
-			<td>2013-10-12 8:00</td>
-			<td>2013-10-12 12:00</td>
-			<td>2013-10-10 16:00</td>
-			<td>Jerry</td>
-			<td><a class="clickbutton" href="meetingdetails.html">查看详情</a></td>
-		</tr>
-		<tr>
-			<td>业务洽谈会</td>
-			<td>第一会议室</td>
-			<td>2013-10-12 8:00</td>
-			<td>2013-10-12 12:00</td>
-			<td>2013-10-10 16:00</td>
-			<td>Jerry</td>
-			<td><a class="clickbutton" href="meetingdetails.html">查看详情</a></td>
-		</tr>
+		<c:forEach var="item" items="${requestScope.map}">
+			<tr>
+				<td>${item.key.meetingname}</td>
+				<td>${item.value[1]}</td>
+				<td>${item.key.starttime}</td>
+				<td>${item.key.endtime}</td>
+				<td>${item.key.reservationtime}</td>
+				<td>${item.value[0]}</td>
+
+				<td><a class="clickbutton" href="meetingdetails.html">查看详情</a></td>
+			</tr>
+		</c:forEach>
+
 	</table>
 </div>
 </div>
