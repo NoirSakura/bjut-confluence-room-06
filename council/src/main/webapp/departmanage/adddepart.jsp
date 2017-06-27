@@ -6,13 +6,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <div class="page-content">
 	<div class="page-content">
-		<div class="content-nav">人员管理 > 部门管理</div>
-		<form>
-
+		<div class="content-nav">人员管理 > 添加部门</div>
+		<form action="AddDeleteDepartmentServlet" method="post">
 			<fieldset>
 				<legend>添加部门</legend>
-				部门名称:<input type="text" id="depart_name" maxlength="10" /> <input
-					type="submit" class="clickbutton" value="添加" />
+				部门名称： <input type="text" name="departmentname" maxlength="20" /> <input
+					type="hidden" name="code" value="add"> <input type="submit"
+					class="clickbutton" value="添加" />
 			</fieldset>
 			<table class="depart_table">
 				<script type="text/javascript">
