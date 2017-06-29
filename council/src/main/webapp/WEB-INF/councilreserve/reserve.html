@@ -1,0 +1,211 @@
+<div class="navbar">
+	<div class="navbar-inner">
+    	<div class="left sliding">
+    		<a href="#" class="back link"> <i class="icon icon-back"></i>
+    			<span>返回首页</span></a></div>
+      	<div class="center sliding">会议预定</div>
+      	<div class="right" style="margin:100px">
+      		{{loginInfo.privilege.name}},&nbsp;
+      		<a href="#" class="item-link item-content" data-context-name="login_info">{{loginInfo.account}}</a>
+      	</div>
+    </div>
+</div> 
+<div class="pages">
+	<!-- 会议预定-->
+  	<div data-page="reserve" class="page">
+  		<div class="page-content">
+    		<div class="content-block">
+  				<!-- 主体部分-->
+    			<div class="content-block-inner">
+     				<div class="row">
+						<!-- 侧边导航栏-->
+						<div class="col-20">
+							<div class="list-block">
+							  	<ul>
+							    	<li class="accordion-item"><a href="#" class="item-content item-link">
+							        	<div class="item-inner">
+							          		<div class="item-title"><b>个人中心</b></div>
+							        	</div></a>
+								      	<div class="accordion-item-content">
+								        	<div class="content-block">
+								          		<ul>
+								          			<li><a href="#" class="item-content item-link" onclick="goIndex()"> > 最新通知</a></li>
+								          			<li><a href="#" class="item-content item-link" onclick="goMyReservation()"> > 我的预定</a></li>
+								          			<li><a href="#" class="item-content item-link" onclick="goMyCouncil()"> > 我的会议</a></li>
+								          		</ul>
+								        	</div>
+			      						</div>
+		    						</li>
+								    <li class="accordion-item"><a href="#" class="item-content item-link">
+										<div class="item-inner">
+								        	<div class="item-title "><b>人员管理</b></div>
+									    </div></a>
+								      	<div class="accordion-item-content">
+								        	<div class="content-block">
+								          		<ul>
+								          			<li><a href="stuffmanage/departmanage" class="item-content item-link"> > 部门管理</a></li>
+								          			<li><a href="stuffmanage/staffreg" class="item-content item-link"> > 员工注册</a></li>
+								          			<li><a href="stuffmanage/regexam" class="item-content item-link"> > 注册审批</a></li>
+								          			<li><a href="stuffmanage/staffsearch" class="item-content item-link"> > 搜索员工</a></li>
+								          		</ul>
+								        	</div>
+								      	</div>
+								    </li>
+								    <li class="accordion-item"><a href="#" class="item-content item-link">
+										<div class="item-inner">
+								        	<div class="item-title"><b>会议预定</b></div>
+									    </div></a>
+								      	<div class="accordion-item-content">
+								        	<div class="content-block">
+								          		<ul>
+								          			<li><a href="councilreserve/addroom" class="item-content item-link"> > 添加会议室</a></li>
+								          			<li><a href="councilreserve/checkroom" class="item-content item-link"> > 查看会议室</a></li>
+								          			<li><a href="#" class="item-content item-link"> > 预定会议</a></li>
+								          			<li><a href="councilreserve/check" class="item-content item-link"> > 搜索会议</a></li>
+								          		</ul>
+								        	</div>
+								      	</div>
+								    </li>
+		  						</ul>
+							</div>
+						</div>
+
+						<!-- 主体内容-->
+						<div class="col-80 page-content-body">
+			          		<div class="content-block">
+			          			<div class="list-block">
+								  <ul>
+								    <!-- Text inputs -->
+								    <li>
+								      <div class="item-content">
+								        <div class="item-media"><i class="icon icon-form-name"></i></div>
+								        <div class="item-inner">
+								          <div class="item-title label">Name</div>
+								          <div class="item-input">
+								            <input type="text" placeholder="Your name">
+								          </div>
+								        </div>
+								      </div>
+								    </li>
+								    <li>
+								      <div class="item-content">
+								        <div class="item-media"><i class="icon icon-form-email"></i></div>
+								        <div class="item-inner">
+								          <div class="item-title label">E-mail</div>
+								          <div class="item-input">
+								            <input type="email" placeholder="E-mail">
+								          </div>
+								        </div>
+								      </div>
+								    </li>
+								    <!-- Select -->
+								    <li>
+								      <div class="item-content">
+								        <div class="item-media"><i class="icon icon-form-gender"></i></div>
+								        <div class="item-inner">
+								          <div class="item-title label">Gender</div>
+								          <div class="item-input">
+								            <select>
+								              <option>Male</option>
+								              <option>Female</option>
+								            </select>
+								          </div>
+								        </div>
+								      </div>
+								    </li>
+								    <!-- Date -->
+								    <li>
+								      <div class="item-content">
+								        <div class="item-media"><i class="icon icon-form-calendar"></i></div>
+								        <div class="item-inner">
+								          <div class="item-title label">Birth date</div>
+								          <div class="item-input">
+								            <input type="date" placeholder="Birth day" value="2014-04-30">
+								          </div>
+								        </div>
+								      </div>
+								    </li>
+								    <!-- Date time-->
+								    <li>
+								      <div class="item-content">
+								        <div class="item-media"><i class="icon icon-form-calendar"></i></div>
+								        <div class="item-inner">
+								          <div class="item-title label">Date time</div>
+								          <div class="item-input">
+								            <input type="datetime-local">
+								          </div>
+								        </div>
+								      </div>
+								    </li>
+								    <!-- Switch (Checkbox) -->
+								    <li>
+								      <div class="item-content">
+								        <div class="item-media"><i class="icon icon-form-toggle"></i></div>
+								        <div class="item-inner">
+								          <div class="item-title label">Switch</div>
+								          <div class="item-input">
+								            <label class="label-switch">
+								              <input type="checkbox">
+								              <div class="checkbox"></div>
+								            </label>
+								          </div>
+								        </div>
+								      </div>
+								    </li>
+								    <!-- Slider (Range input) -->
+								    <li>
+								      <div class="item-content">
+								        <div class="item-media"><i class="icon icon-form-settings"></i></div>
+								        <div class="item-inner">
+								          <div class="item-title label">Slider</div>
+								          <div class="item-input">
+								            <div class="range-slider">
+								              <input type="range" min="0" max="100" value="50" step="0.1">
+								            </div>
+								          </div>
+								        </div>
+								      </div>
+								    </li>
+								    <!-- Textarea -->
+								    <li class="align-top">
+								      <div class="item-content">
+								        <div class="item-media"><i class="icon icon-form-comment"></i></div>
+								        <div class="item-inner">
+								          <div class="item-title label">Textarea</div>
+								          <div class="item-input">
+								            <textarea></textarea>
+								          </div>
+								        </div>
+								      </div>
+								    </li>
+								  </ul>
+								  
+								</div>
+				            </div>
+				        </div>
+        
+					</div>
+				</div>
+
+	       		<!-- 页脚部分-->
+	        	<div class="row">
+	        		<div class="col-40"></div>
+	        		<div class="col-60">
+	        			<p class="systime">系统时间:</p>
+					</div>
+				</div>
+				<hr>
+				<div class="row">
+		       		<div class="col-30"></div>
+		       		<div class="col-10">
+		       			<img src="img/footer.png" width="90%" height="90%"/>
+		       		</div>
+			       	<div class="col-60">
+			      		<p>© 2017 BEIJING UNIVERSITY OF TECHNOLOGY.</p>
+			        	<p>All rights reserved Powered by Baker Fung</p>
+					</div>
+				</div>
+        	</div>
+       	</div>
+	</div>
+</div>

@@ -7,8 +7,7 @@ import org.springframework.stereotype.Service;
 
 import sse.bjut.council.dao.LoginInfoDao;
 import sse.bjut.council.entity.LoginInfo;
-import sse.bjut.council.entity.ResTemp;
-import sse.bjut.council.service.NetStateEnum;
+import sse.bjut.council.util.*;
 
 @Service
 public class AccountService {
@@ -82,7 +81,7 @@ public class AccountService {
 			data.put("staff_id", loginInfo.getStaffId().toString());
 			data.put("account", loginInfo.getAccount());
 			data.put("privilege", loginInfo.getPrivilege().toString());
-			data.put("last_login_time", NetStateEnum.dateFormat(loginInfo.getLastLoginTime()));
+			data.put("last_login_time", DateProcess.dateFormat(loginInfo.getLastLoginTime()));
 			res.setData(data);
 		}
 		return res;

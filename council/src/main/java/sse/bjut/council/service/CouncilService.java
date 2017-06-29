@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import sse.bjut.council.dao.*;
 import sse.bjut.council.entity.*;
+import sse.bjut.council.util.*;
 
 @Service
 public class CouncilService {
@@ -33,12 +34,21 @@ public class CouncilService {
 			if(room != null) {
 				data.put("council_name", council_data.getName());
 				data.put("council_room_name", room.getRoomName());
-				data.put("start_time", NetStateEnum.dateFormat(council_data.getStartTime()));
-				data.put("stop_time", NetStateEnum.dateFormat(council_data.getEndTime()));
-				data.put("reserve_time", NetStateEnum.dateFormat(council_data.getReserveTime()));
+				data.put("start_time", DateProcess.dateFormat(council_data.getStartTime()));
+				data.put("stop_time", DateProcess.dateFormat(council_data.getEndTime()));
+				data.put("reserve_time", DateProcess.dateFormat(council_data.getReserveTime()));
 				data_list.add(data);
 			}
 		}
+		res.setExecuteCode(String.valueOf(data_list.size()));
+		res.setExecuteResult("success");
+		res.setData(data_list);
+		return res;
+	}
+	
+	public ResTemp getRooms() {
+		ResTemp res = new ResTemp();
+		List<CouncilRoom> data_list = councilRoomDao.findByDelFlag(false);
 		res.setExecuteCode(String.valueOf(data_list.size()));
 		res.setExecuteResult("success");
 		res.setData(data_list);

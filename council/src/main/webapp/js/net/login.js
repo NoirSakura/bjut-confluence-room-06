@@ -57,10 +57,9 @@ $$('#login').on('click', function() {
 										} 
 								};
 								
+								myApp.alert(Template7.data.index.loginInfo);
 								/// 为页面缓存添加登陆信息
 								Template7.data.index.loginInfo = login_info;
-								Template7.data.myCouncils.loginInfo = login_info;
-								Template7.data.myReservations.loginInfo = login_info;
 								
 								myApp.closeModal('.login-screen');
 								mainView.router.load({

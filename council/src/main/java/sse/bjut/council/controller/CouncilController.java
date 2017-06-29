@@ -7,11 +7,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import sse.bjut.council.service.CouncilService;
-import sse.bjut.council.entity.ResTemp;
+import sse.bjut.council.util.ResTemp;
 
-@Controller
+@RestController
 @RequestMapping(value = "/council")
 public class CouncilController {
 
@@ -19,14 +20,22 @@ public class CouncilController {
 	CouncilService councilService;
 	
 	@RequestMapping(value = "/myresv", method = RequestMethod.POST)
-	@ResponseBody
 	public ResTemp getMyReservationsByPOST(@RequestParam("reserve_id") Integer reserve_id){
 		return getMyReservationsByGET(reserve_id);
 	}
 	
 	@RequestMapping(value = "/myresv", method = RequestMethod.GET)
-	@ResponseBody
 	public ResTemp getMyReservationsByGET(@RequestParam("reserve_id") Integer reserve_id){
 		return councilService.getMyReservations(reserve_id);
+	}
+	
+	@RequestMapping(value = "/getrooms", method = RequestMethod.POST)
+	public ResTemp getRoomsByPOST(){
+		return getRoomsByGET();
+	}
+	
+	@RequestMapping(value = "/getrooms", method = RequestMethod.GET)
+	public ResTemp getRoomsByGET(){
+		return councilService.getRooms();
 	}
 }

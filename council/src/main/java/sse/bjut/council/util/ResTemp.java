@@ -1,4 +1,4 @@
-package sse.bjut.council.entity;
+package sse.bjut.council.util;
 
 public class ResTemp {
 	private String executeCode;
