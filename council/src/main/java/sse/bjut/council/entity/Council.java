@@ -50,6 +50,9 @@ public class Council implements Serializable{
     
     @Column(name="end_time", nullable=false)
 	Date endTime;    
+
+    @Column(name="reserve_time", nullable=false)
+	Date reserveTime;  
     
     @Column(name="info", nullable=false, length=200)
 	String info;   
@@ -108,6 +111,12 @@ public class Council implements Serializable{
 	public void setEndTime(Date endTime) {
 		this.endTime = endTime;
 	}
+	public Date getReserveTime() {
+		return reserveTime;
+	}
+	public void setReserveTime(Date reserveTime) {
+		this.reserveTime = reserveTime;
+	}
 	public String getInfo() {
 		return info;
 	}
@@ -120,7 +129,7 @@ public class Council implements Serializable{
 	public void setState(Integer state) {
 		this.state = state;
 	}
-
+	
 	//-----------------------------------------------
     // toString METHOD
     //-----------------------------------------------

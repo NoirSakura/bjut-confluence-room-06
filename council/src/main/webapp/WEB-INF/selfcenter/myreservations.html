@@ -1,0 +1,132 @@
+<div class="navbar">
+	<div class="navbar-inner">
+    	<div class="left sliding">
+    		<a href="#" class="back link"> <i class="icon icon-back"></i>
+    			<span>返回首页</span></a></div>
+      	<div class="center sliding">我的预定</div>
+      	<div class="right" style="margin:100px">
+      		{{loginInfo.privilege.name}},&nbsp;
+      		<a href="#" class="item-link item-content" data-context-name="login_info">{{loginInfo.account}}</a>
+      	</div>
+    </div>
+</div> 
+<div class="pages">
+	<!-- 我的预定-->
+  	<div data-page="myreservations" class="page">
+  		<div class="page-content">
+    		<div class="content-block">
+  				<!-- 主体部分-->
+    			<div class="content-block-inner">
+     				<div class="row">
+						<!-- 侧边导航栏-->
+						<div class="col-20">
+							<div class="list-block">
+							  	<ul>
+							    	<li class="accordion-item"><a href="#" class="item-content item-link">
+							        	<div class="item-inner">
+							          		<div class="item-title"><b>个人中心</b></div>
+							        	</div></a>
+								      	<div class="accordion-item-content">
+								        	<div class="content-block">
+								          		<ul>
+								          			<li><a href="#" data-context-name="index" class="item-content item-link"> > 最新通知</a></li>
+								          			<li><a href="#" class="item-content item-link" onclick=""> > 我的预定</a></li>
+								          			<li><a href="#" class="item-content item-link" onclick=""> > 我的会议</a></li>
+								          		</ul>
+								        	</div>
+			      						</div>
+		    						</li>
+								    <li class="accordion-item"><a href="#" class="item-content item-link">
+										<div class="item-inner">
+								        	<div class="item-title "><b>人员管理</b></div>
+									    </div></a>
+								      	<div class="accordion-item-content">
+								        	<div class="content-block">
+								          		<ul>
+								          			<li><a href="stuffmanage/departmanage" class="item-content item-link"> > 部门管理</a></li>
+								          			<li><a href="stuffmanage/staffreg" class="item-content item-link"> > 员工注册</a></li>
+								          			<li><a href="stuffmanage/regexam" class="item-content item-link"> > 注册审批</a></li>
+								          			<li><a href="stuffmanage/staffsearch" class="item-content item-link"> > 搜索员工</a></li>
+								          		</ul>
+								        	</div>
+								      	</div>
+								    </li>
+								    <li class="accordion-item"><a href="#" class="item-content item-link">
+										<div class="item-inner">
+								        	<div class="item-title"><b>会议预定</b></div>
+									    </div></a>
+								      	<div class="accordion-item-content">
+								        	<div class="content-block">
+								          		<ul>
+								          			<li><a href="councilreserve/addroom" class="item-content item-link"> > 添加会议室</a></li>
+								          			<li><a href="councilreserve/checkroom" class="item-content item-link"> > 查看会议室</a></li>
+								          			<li><a href="councilreserve/reserve" class="item-content item-link"> > 预定会议</a></li>
+								          			<li><a href="councilreserve/check" class="item-content item-link"> > 搜索会议</a></li>
+								          		</ul>
+								        	</div>
+								      	</div>
+								    </li>
+		  						</ul>
+							</div>
+						</div>
+
+						<!-- 主体内容-->
+						<div class="col-80 page-content-body">
+			          		<div class="content-block">
+			          			<form>
+			          				<p>个人中心  > 我的预定</p>
+			          				<hr>
+			          				<p class="tabel-label">我预定的会议：</p>
+			          				{{#if response.active}}
+								    <table>
+										<tr>
+					          				<td class="table-title" width="35%">会议名称</td>
+					          				<td class="table-title" width="15%">会议室名称</td>
+					          				<td class="table-title" width="15%">会议开始时间</td>
+					          				<td class="table-title" width="15%">会议结束时间</td>
+					          				<td class="table-title" width="15%">会议预定时间</td>
+					          				<td class="table-title" width="5%">操作</td>
+								       	<tr>
+        								{{#each response.data}}
+										<tr>
+					          				<td class="table-content" width="35%">{{council_name}}</td>
+					          				<td class="table-content" width="15%">{{council_room_name}}</td>
+					          				<td class="table-content" width="15%">{{start_time}}</td>
+					          				<td class="table-content" width="15%">{{stop_time}}</td>
+					          				<td class="table-content" width="15%">{{reserve_time}}</td>
+					          				<td class="table-content" width="5%">查看</td>
+								       	<tr>
+        								{{/each}}
+								    </table>
+									{{else}}
+										<p>当前没有预定的会议！</p>
+									{{/if}}
+								</form>
+				            </div>
+				        </div>
+        
+					</div>
+				</div>
+
+	       		<!-- 页脚部分-->
+	        	<div class="row">
+	        		<div class="col-40"></div>
+	        		<div class="col-60">
+	        			<p class="systime">系统时间:</p>
+					</div>
+				</div>
+				<hr>
+				<div class="row">
+		       		<div class="col-30"></div>
+		       		<div class="col-10">
+		       			<img src="img/footer.png" width="90%" height="90%"/>
+		       		</div>
+			       	<div class="col-60">
+			      		<p>© 2017 BEIJING UNIVERSITY OF TECHNOLOGY.</p>
+			        	<p>All rights reserved Powered by Baker Fung</p>
+					</div>
+				</div>
+        	</div>
+       	</div>
+	</div>
+</div>

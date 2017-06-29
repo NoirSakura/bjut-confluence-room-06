@@ -1,0 +1,79 @@
+/*登陆界面*/
+.login-screen-content{
+	background-image:url(../img/bg/login.jpg);
+	background-size:cover;
+}
+.login-form{
+	opacity:0.9;
+}
+.login-header{
+	border:4px solid #3333CC;
+	border-radius:5px;
+}
+.login-screen-title{
+	font-size:36px;
+	color:#0000A0;
+	font-weight:bold;
+}
+.login-marquee{
+	border:3px double #3333CC;
+}
+
+/*侧边栏*/
+.accordion-item{
+	font-size:15px;
+}
+
+.inset{
+	border:3px double #3333CC;
+}
+
+.index-information{
+	border:3px solid #3333CC;
+	padding:10px;
+	border-radius:10px;
+}
+
+.information-label{
+	font-size:20px;	
+}
+
+/*注释内容*/ 
+.index-header{
+	font-size:32px;
+	padding:0px 10px 10px 10px;
+}
+
+/*注释内容*/ 
+.page-content-body{
+	padding:10px 10px 10px 10px;
+}
+
+/*表格属性*/
+table{
+	border-collapse:collapse;
+	width:100%;
+}
+
+.table-title{
+  background: #006;
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 5px;
+}
+
+.table-content{
+  background: #222;
+  text-align: center;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 5px;
+}
+
+.tabel-label{
+  margin: 5px;
+  font-size:18px;
+  font-weight:bold;
+}

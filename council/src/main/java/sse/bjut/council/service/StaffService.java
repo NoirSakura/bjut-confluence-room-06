@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 import sse.bjut.council.dao.LoginInfoDao;
 import sse.bjut.council.dao.StaffInfoDao;
-import sse.bjut.council.entity.LoginInfo;
 import sse.bjut.council.entity.Staff;
 
 @Service
@@ -30,16 +29,16 @@ public class StaffService {
 			staff = null;
 		}
 
-		LoginInfo login_info  = loginInfoDao.findByAccount(accountName);
-		if(depart == null){
-			depart = new Depart();
-			depart.setDepartName(departName);
-			departInfoDao.save(depart);
-			return 0;
-			if(staff != null)
-				
-		}
+//		if(depart == null){
+//			depart = new Depart();
+//			depart.setDepartName(departName);
+//			departInfoDao.save(depart);
+//			return 0;
+//			if(staff != null)
+//				
+//		}
 		
+//		
 		return Integer.valueOf(exe_code.toString());
 	}
 	

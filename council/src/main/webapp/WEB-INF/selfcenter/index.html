@@ -1,0 +1,176 @@
+<div class="navbar">
+	<div class="navbar-inner">
+      	<div class="center sliding">最新通知</div>
+      	<div class="right" style="margin:100px">
+      		{{loginInfo.privilege.name}},&nbsp;
+      		<a href="#" class="item-link item-content" data-context-name="login_info">{{loginInfo.account}}</a>
+      	</div>
+    </div>
+</div> 
+<div class="pages">
+	<!-- 最新通知-->
+  	<div data-page="index" class="page">
+  		<div class="page-content">
+         	<!-- 系统公告-->
+           	<div class="content-block-title index-information">
+           		<p>
+           			<b class="information-label">系统公告 :&nbsp;&nbsp;&nbsp; </b>
+	              	<marquee>现在还没有公告，别看了。</marquee>
+                </p>
+           	</div>	
+           	
+    		<div class="content-block">
+  				<!-- 主体部分-->
+    			<div class="content-block-inner">
+     				<div class="row">
+						<!-- 侧边导航栏-->
+						<div class="col-20">
+							<div class="list-block">
+							  	<ul>
+							    	<li class="accordion-item"><a href="#" class="item-content item-link">
+							        	<div class="item-inner">
+							          		<div class="item-title"><b>个人中心</b></div>
+							        	</div></a>
+								      	<div class="accordion-item-content">
+								        	<div class="content-block">
+								          		<ul>
+								          			<li><a href="#" class="item-content item-link"> > 最新通知</a></li>
+								          			<li><a href="#" class="item-content item-link" onclick="goMyReservation()"> > 我的预定</a></li>
+								          			<li><a href="#" class="item-content item-link"> > 我的会议</a></li>
+								          		</ul>
+								        	</div>
+			      						</div>
+		    						</li>
+								    <li class="accordion-item"><a href="#" class="item-content item-link">
+										<div class="item-inner">
+								        	<div class="item-title "><b>人员管理</b></div>
+									    </div></a>
+								      	<div class="accordion-item-content">
+								        	<div class="content-block">
+								          		<ul>
+								          			<li><a href="stuffmanage/departmanage" class="item-content item-link"> > 部门管理</a></li>
+								          			<li><a href="stuffmanage/staffreg" class="item-content item-link"> > 员工注册</a></li>
+								          			<li><a href="stuffmanage/regexam" class="item-content item-link"> > 注册审批</a></li>
+								          			<li><a href="stuffmanage/staffsearch" class="item-content item-link"> > 搜索员工</a></li>
+								          		</ul>
+								        	</div>
+								      	</div>
+								    </li>
+								    <li class="accordion-item"><a href="#" class="item-content item-link">
+										<div class="item-inner">
+								        	<div class="item-title"><b>会议预定</b></div>
+									    </div></a>
+								      	<div class="accordion-item-content">
+								        	<div class="content-block">
+								          		<ul>
+								          			<li><a id = "addroom" href="councilreserve/addroom" class="item-content item-link"> > 添加会议室</a></li>
+								          			<li><a id = "checkroom" href="councilreserve/checkroom" class="item-content item-link"> > 查看会议室</a></li>
+								          			<li><a id = "reserve" href="councilreserve/reserve" class="item-content item-link"> > 预定会议</a></li>
+								          			<li><a id = "checkcouncil" href="councilreserve/checkcouncil" class="item-content item-link"> > 搜索会议</a></li>
+								          		</ul>
+								        	</div>
+								      	</div>
+								    </li>
+		  						</ul>
+							</div>
+						</div>
+
+						<!-- 主体内容-->
+						<div class="col-80 page-content-body">
+			          		<div class="content-block">
+			          			<form>
+			          				<p>个人中心  > 最新信息</p>
+			          				<hr>
+			          				<p>上次登陆&nbsp;:&nbsp;{{loginInfo.last_login_time}}</p>
+			          				<p class="tabel-label">未来7天我要参加的会议:</p>
+								    <table>
+										<tr>
+					          				<td class="table-title" width="40%">会议名称</td>
+					          				<td class="table-title" width="20%">会议室</td>
+					          				<td class="table-title" width="15%">起始时间</td>
+					          				<td class="table-title" width="15%">结束时间</td>
+					          				<td class="table-title" width="10%">操作</td>
+								       	<tr>
+										<tr>
+					          				<td class="table-content" width="40%">三季度销售总结会</td>
+					          				<td class="table-content" width="20%">第一会议室</td>
+					          				<td class="table-content" width="15%">2013-11-20 09:00</td>
+					          				<td class="table-content" width="15%">2013-11-20 11:00</td>
+					          				<td class="table-content" width="10%">查看详情</td>
+								       	<tr>
+										<tr>
+					          				<td class="table-content" width="40%">三季度销售总结会</td>
+					          				<td class="table-content" width="20%">第一会议室</td>
+					          				<td class="table-content" width="15%">2013-11-20 09:00</td>
+					          				<td class="table-content" width="15%">2013-11-20 11:00</td>
+					          				<td class="table-content" width="10%">查看详情</td>
+								       	<tr>
+										<tr>
+					          				<td class="table-content" width="40%">三季度销售总结会</td>
+					          				<td class="table-content" width="20%">第一会议室</td>
+					          				<td class="table-content" width="15%">2013-11-20 09:00</td>
+					          				<td class="table-content" width="15%">2013-11-20 11:00</td>
+					          				<td class="table-content" width="10%">查看详情</td>
+								       	<tr>
+								    </table>
+									<p/>
+			          				<p class="tabel-label">已取消的会议:</p>
+								    <table>
+										<tr>
+					          				<td class="table-content" width="40%">三季度销售总结会</td>
+					          				<td class="table-content" width="20%">第一会议室</td>
+					          				<td class="table-content" width="15%">2013-11-20 09:00</td>
+					          				<td class="table-content" width="15%">2013-11-20 11:00</td>
+					          				<td class="table-content" width="10%">查看详情</td>
+								       	<tr>
+										<tr>
+					          				<td class="table-content" width="40%">三季度销售总结会</td>
+					          				<td class="table-content" width="20%">第一会议室</td>
+					          				<td class="table-content" width="15%">2013-11-20 09:00</td>
+					          				<td class="table-content" width="15%">2013-11-20 11:00</td>
+					          				<td class="table-content" width="10%">查看详情</td>
+								       	<tr>
+										<tr>
+					          				<td class="table-content" width="40%">三季度销售总结会</td>
+					          				<td class="table-content" width="20%">第一会议室</td>
+					          				<td class="table-content" width="15%">2013-11-20 09:00</td>
+					          				<td class="table-content" width="15%">2013-11-20 11:00</td>
+					          				<td class="table-content" width="10%">查看详情</td>
+								       	<tr>
+								    </table>
+								</form>
+				            </div>
+				        </div>
+        
+					</div>
+				</div>
+
+	       		<!-- 页脚部分-->
+	        	<div class="row">
+	        		<div class="col-40"></div>
+	        		<div class="col-60">
+	        			<p class="systime">系统时间:</p>
+					</div>
+				</div>
+				<hr>
+				<div class="row">
+		       		<div class="col-30"></div>
+		       		<div class="col-10">
+		       			<img src="img/footer.png" width="90%" height="90%"/>
+		       		</div>
+			       	<div class="col-60">
+			       		<p>
+			       		<select name=""> 
+							<option value="0">123</option> 
+							<option value="1">456</option> 
+							<option value="2">789</option> 
+						</select> 
+			       		</p>
+			      		<p>© 2017 BEIJING UNIVERSITY OF TECHNOLOGY.</p>
+			        	<p>All rights reserved Powered by Baker Fung</p>
+					</div>
+				</div>
+        	</div>
+       	</div>
+	</div>
+</div>
