@@ -38,6 +38,9 @@ public class Council implements Serializable{
     
     @Column(name="reserve_id", nullable=false, length=10)
     Integer reserveID;
+
+    @Column(name="reserve_name", nullable=false, length=10)
+	String reserveName;  
     
     @Column(name="name", nullable=false, length=45)
 	String name;
@@ -54,7 +57,7 @@ public class Council implements Serializable{
     @Column(name="reserve_time", nullable=false)
 	Date reserveTime;  
     
-    @Column(name="info", nullable=false, length=200)
+    @Column(name="info", length=200)
 	String info;   
     
     @Column(name="state", nullable=false)
@@ -86,6 +89,12 @@ public class Council implements Serializable{
 	}
 	public void setReserveID(Integer reserveID) {
 		this.reserveID = reserveID;
+	}
+	public String getReserveName() {
+		return reserveName;
+	}
+	public void setReserveName(String reserveName) {
+		this.reserveName = reserveName;
 	}
 	public String getName() {
 		return name;
@@ -129,13 +138,15 @@ public class Council implements Serializable{
 	public void setState(Integer state) {
 		this.state = state;
 	}
-	
+
 	//-----------------------------------------------
     // toString METHOD
     //-----------------------------------------------
 	@Override
 	public String toString() {
-		return "Council [id=" + id + ", councilRoomID=" + councilRoomID + ", reserveID=" + reserveID + ", name=" + name + ", attendance=" + attendance
-				+ ", startTime=" + startTime + ", endTime=" + endTime + ", info=" + info + ", state=" + state + "]";
+		return "Council [id=" + id + ", councilRoomID=" + councilRoomID + ", reserveID=" + reserveID + ", reserveName="
+				+ reserveName + ", name=" + name + ", attendance=" + attendance + ", startTime=" + startTime
+				+ ", endTime=" + endTime + ", reserveTime=" + reserveTime + ", info=" + info + ", state=" + state + "]";
 	}
+	
 }

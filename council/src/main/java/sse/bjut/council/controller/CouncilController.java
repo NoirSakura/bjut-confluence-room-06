@@ -29,6 +29,16 @@ public class CouncilController {
 		return councilService.getMyReservations(reserve_id);
 	}
 	
+	@RequestMapping(value = "/mycouncils", method = RequestMethod.POST)
+	public ResTemp getMyCouncilsByPOST(@RequestParam("att_id") Integer att_id){
+		return getMyCouncilsByGET(att_id);
+	}
+	
+	@RequestMapping(value = "/mycouncils", method = RequestMethod.GET)
+	public ResTemp getMyCouncilsByGET(@RequestParam("att_id") Integer att_id){
+		return councilService.getMyCouncils(att_id);
+	}
+	
 	@RequestMapping(value = "/getrooms", method = RequestMethod.POST)
 	public ResTemp getRoomsByPOST(){
 		return getRoomsByGET();

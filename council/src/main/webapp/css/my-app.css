@@ -49,6 +49,12 @@
 	padding:10px 10px 10px 10px;
 }
 
+.recent-page-href{
+	color:#ff8000;
+	font-size:14px;
+	font-weight:bold;
+}
+
 /*表格属性*/
 table{
 	border-collapse:collapse;
