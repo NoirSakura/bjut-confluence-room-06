@@ -83,3 +83,10 @@ table{
   font-size:18px;
   font-weight:bold;
 }
+
+/*说明*/
+.description{
+  border: 3px double #ccc;
+  border-radius:10px;
+  padding: 10px;
+}

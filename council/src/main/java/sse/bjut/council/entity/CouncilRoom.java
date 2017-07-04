@@ -33,13 +33,13 @@ public class CouncilRoom implements Serializable{
     // ENTITY DATA FIELDS
     //-----------------------------------------------
     @Column(name="room_no", nullable=false,length=4)
-	String roomNo;
+    Integer roomNo;
     
     @Column(name="room_name", nullable=false,length=10)
 	String roomName;
     
     @Column(name="max_number", nullable=false,length=5)
-	String maxNumber;
+    Integer maxNumber;
     
     @Column(name="note", nullable=false,length=200)
 	String note;
@@ -48,7 +48,7 @@ public class CouncilRoom implements Serializable{
 	Boolean delFlag = false;    
     
     @Column(name="stop_flag", nullable=false)
-	Boolean stopFlag = false;   
+	Short stopFlag = 0;   
     
     //-----------------------------------------------
     // CONSTRUCTOR(S)
@@ -67,11 +67,11 @@ public class CouncilRoom implements Serializable{
 	}
 
 
-	public String getRoomNo() {
+	public Integer getRoomNo() {
 		return roomNo;
 	}
 
-	public void setRoomNo(String roomNo) {
+	public void setRoomNo(Integer roomNo) {
 		this.roomNo = roomNo;
 	}
 
@@ -83,11 +83,11 @@ public class CouncilRoom implements Serializable{
 		this.roomName = roomName;
 	}
 
-	public String getMaxNumber() {
+	public Integer getMaxNumber() {
 		return maxNumber;
 	}
 
-	public void setMaxNumber(String maxNumber) {
+	public void setMaxNumber(Integer maxNumber) {
 		this.maxNumber = maxNumber;
 	}
 
@@ -107,11 +107,11 @@ public class CouncilRoom implements Serializable{
 		this.delFlag = delFlag;
 	}
 
-	public Boolean getStopFlag() {
+	public Short getStopFlag() {
 		return stopFlag;
 	}
 
-	public void setStopFlag(Boolean stopFlag) {
+	public void setStopFlag(Short stopFlag) {
 		this.stopFlag = stopFlag;
 	}
 

@@ -36,9 +36,13 @@ var myApp = new Framework7({
     },
 	
     onPageInit: function (app, page) {
-        if (page.name === 'myreservations') {
-        	setTimeout(function(){
-            	},1000);
+        if (page.name === 'departmanage') {
+        	$$('a.button-edit-save').off('click',editDepart);
+        	$$('a.button-edit-save').on('click',editDepart);
+        	$$('a.button-delete').off('click',deleteDepart);
+        	$$('a.button-delete').on('click',deleteDepart);
+        	$$('a.button-cancel').off('click',cancelDepart);
+        	$$('a.button-cancel').on('click',cancelDepart);
         }
     },
     preroute: function (view, options) {

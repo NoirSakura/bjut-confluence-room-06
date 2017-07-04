@@ -10,4 +10,5 @@ public interface StaffInfoDao extends PagingAndSortingRepository<Staff, Integer>
 	List<Staff> findByName(String name);
 	Staff findByEmail(String email);
 	Staff findByPhone(Integer phone);
+	List<Staff> findByNameAndDelFlag(String name, Boolean DelFlag);
 }

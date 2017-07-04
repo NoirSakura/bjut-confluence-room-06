@@ -1,8 +1,9 @@
 <div class="navbar">
 	<div class="navbar-inner">
     	<div class="left sliding">
-    		<a href="#" class="back link"> <i class="icon icon-back"></i>
-    			<span>返回首页</span></a></div>
+    		<a href="#" onClick="goIndex()" class="link"> 
+	    			<i class="icon icon-back"></i><span>返回首页</span></a>
+    	</div>
       	<div class="center sliding">我的会议</div>
       	<div class="right" style="margin:100px">
       		{{loginInfo.privilege.name}},&nbsp;
@@ -12,7 +13,7 @@
 </div> 
 <div class="pages">
 	<!-- 我的会议-->
-  	<div data-page="myreservations" class="page">
+  	<div data-page="mycouncils" class="page">
   		<div class="page-content">
     		<div class="content-block">
   				<!-- 主体部分-->
@@ -88,7 +89,6 @@
 					          				<td class="table-title" width="10%">预订者</td>
 					          				<td class="table-title" width="10%">操作</td>
 								       	<tr>
-								       	<tr class = "virtual-list"></tr>
         								{{#each response.data}}
 										<tr>
 					          				<td class="table-content" width="35%">{{council_name}}</td>

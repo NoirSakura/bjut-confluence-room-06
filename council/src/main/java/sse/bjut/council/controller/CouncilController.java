@@ -48,4 +48,22 @@ public class CouncilController {
 	public ResTemp getRoomsByGET(){
 		return councilService.getRooms();
 	}
+	
+	@RequestMapping(value = "/addroom", method = RequestMethod.POST)
+	public ResTemp addRoomByPOST(@RequestParam("room_no") Integer room_no,
+			@RequestParam("room_name") String room_name,
+			@RequestParam("max_number") Integer max_number,
+			@RequestParam("note") String note,
+			@RequestParam("stop_flag") Short stop_flag){
+		return addRoomByGET(room_no,room_name,max_number,note,stop_flag);
+	}
+	
+	@RequestMapping(value = "/addroom", method = RequestMethod.GET)
+	public ResTemp addRoomByGET(@RequestParam("room_no") Integer room_no,
+			@RequestParam("room_name") String room_name,
+			@RequestParam("max_number") Integer max_number,
+			@RequestParam("note") String note,
+			@RequestParam("stop_flag") Short stop_flag){
+		return councilService.addRoom(room_no,room_name,max_number,note,stop_flag);
+	}
 }

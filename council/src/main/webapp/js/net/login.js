@@ -5,20 +5,20 @@
 //			var get_data = "account="+account+"&password="+password+"&privilege="+identity;
 //			
 //			if($$('#account').val() == "") {
-//				$$('#pass-label').css('color', '#ffffff');
+//				$$('#pass-label').css('color', '#ddd');
 //				$$('#pass-label').css('font-weight', 'normal');
 //				$$('#pass-label').css('opacity', '0.9');
 //				
-//				$$('#acc-label').css('color', '#ff0000');
+//				$$('#acc-label').css('color', '#f00');
 //				$$('#acc-label').css('font-weight', 'bold');
 //				myApp.alert('账户不能为空！','输入错误');
 //			}
 //			else if($$('#password').val() == "") {
-//				$$('#acc-label').css('color', '#ffffff');
+//				$$('#acc-label').css('color', '#ddd');
 //				$$('#acc-label').css('font-weight', 'normal');
 //				$$('#acc-label').css('opacity', '0.9');
 //				
-//				$$('#pass-label').css('color', '#ff0000');
+//				$$('#pass-label').css('color', '#f00');
 //				$$('#pass-label').css('font-weight', 'bold');
 //				myApp.alert('密码不能为空！','输入错误');
 //			}
@@ -86,6 +86,7 @@
 //
 myApp.closeModal('.login-screen');
 mainView.router.load({
-	url:'selfcenter/index',
+	//url:'selfcenter/index',
+	url:'councilreserve/checkrooms',
 	contextName:'dataCache'
 });

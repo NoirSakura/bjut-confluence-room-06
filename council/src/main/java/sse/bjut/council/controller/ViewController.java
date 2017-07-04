@@ -23,17 +23,33 @@ public class ViewController {
 		return "selfcenter/index";
 	}
 	
-	@RequestMapping("/selfcenter/mycouncils")
-	public String myCouncils() {
-		return "selfcenter/mycouncils";
-	}
-	
 	@RequestMapping("/selfcenter/myreservations")
 	public String myReservations() {
 		return "selfcenter/myreservations";
 	}
 	
+	@RequestMapping("/selfcenter/mycouncils")
+	public String myCouncils() {
+		return "selfcenter/mycouncils";
+	}
+	
+	// 人员管理
+	@RequestMapping("/staffmanage/departmanage")
+	public String departManage() {
+		return "staffmanage/departmanage";
+	}
+	
 	// 会议预定
+	@RequestMapping("/councilreserve/addroom")
+	public String addroom() {
+		return "councilreserve/addroom";
+	}
+	
+	@RequestMapping("/councilreserve/checkrooms")
+	public String checkrooms() {
+		return "councilreserve/checkrooms";
+	}
+	
 	@RequestMapping("/councilreserve/reserve")
 	public String reserve() {
 		return "councilreserve/reserve";

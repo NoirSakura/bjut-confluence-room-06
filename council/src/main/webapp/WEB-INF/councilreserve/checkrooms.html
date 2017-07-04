@@ -4,7 +4,7 @@
     		<a href="#" onClick="goIndex()" class="link"> 
 	    			<i class="icon icon-back"></i><span>返回首页</span></a>
     	</div>
-      	<div class="center sliding">我的预定</div>
+      	<div class="center sliding">查看会议室</div>
       	<div class="right" style="margin:100px">
       		{{loginInfo.privilege.name}},&nbsp;
       		<a href="#" class="item-link item-content" data-context-name="login_info">{{loginInfo.account}}</a>
@@ -12,8 +12,8 @@
     </div>
 </div> 
 <div class="pages">
-	<!-- 我的预定-->
-  	<div data-page="myreservations" class="page">
+	<!-- 查看会议室-->
+  	<div data-page="checkrooms" class="page">
   		<div class="page-content">
     		<div class="content-block">
   				<!-- 主体部分-->
@@ -31,7 +31,7 @@
 								        	<div class="content-block">
 								          		<ul>
 								          			<li><a href="#" class="item-content item-link" onclick="goIndex()">最新通知</a></li>
-								          			<li><p class="recent-page-href">&gt;&nbsp;我的预定&nbsp;&lt;</p></li>
+								          			<li><a href="#" class="item-content item-link" onclick="goMyReservations()">我的预定</a></li>
 								          			<li><a href="#" class="item-content item-link" onclick="goMyCouncils()">我的会议</a></li>
 								          		</ul>
 								        	</div>
@@ -44,7 +44,7 @@
 								      	<div class="accordion-item-content">
 								        	<div class="content-block">
 								          		<ul>
-								          			<li><a href="stuffmanage/departmanage" class="item-content item-link">&gt;&nbsp;部门管理</a></li>
+								          			<li><a href="#" class="item-content item-link" onclick="goDepartManage()">&gt;&nbsp;部门管理</a></li>
 								          			<li><a href="stuffmanage/staffreg" class="item-content item-link">&gt;&nbsp;员工注册</a></li>
 								          			<li><a href="stuffmanage/regexam" class="item-content item-link">&gt;&nbsp;注册审批</a></li>
 								          			<li><a href="stuffmanage/staffsearch" class="item-content item-link">&gt;&nbsp;搜索员工</a></li>
@@ -59,8 +59,8 @@
 								      	<div class="accordion-item-content">
 								        	<div class="content-block">
 								          		<ul>
-								          			<li><a href="councilreserve/addroom" class="item-content item-link">&gt;&nbsp;添加会议室</a></li>
-								          			<li><a href="councilreserve/checkroom" class="item-content item-link">&gt;&nbsp;查看会议室</a></li>
+								          			<li><a href="#" class="item-content item-link" onclick="goAddRoom()">&gt;&nbsp;添加会议室</a></li>
+								          			<li><p class="recent-page-href">&gt;&nbsp;查看会议室&nbsp;&lt;</p></li>
 								          			<li><a href="councilreserve/reserve" class="item-content item-link">&gt;&nbsp;预定会议</a></li>
 								          			<li><a href="councilreserve/checkcouncil" class="item-content item-link">&gt;&nbsp;搜索会议</a></li>
 								          		</ul>
@@ -75,34 +75,32 @@
 						<div class="col-80 page-content-body">
 			          		<div class="content-block">
 			          			<form>
-			          				<p>个人中心&nbsp;&nbsp;>&nbsp;&nbsp;我的预定</p>
+			          				<p>个人中心&nbsp;&nbsp;>&nbsp;&nbsp;查看会议室</p>
 			          				<hr>
-			          				<p class="tabel-label">我预定的会议：</p>
+			          				<p class="tabel-label">所有会议室：</p>
 			          				{{#if response.active}}
 								    <table>
 										<tr>
-					          				<td class="table-title" width="34%">会议名称</td>
-					          				<td class="table-title" width="14%">会议室名称</td>
-					          				<td class="table-title" width="14%">会议开始时间</td>
-					          				<td class="table-title" width="14%">会议结束时间</td>
-					          				<td class="table-title" width="14%">会议预定时间</td>
-					          				<td class="table-title" width="10%">操作</td>
+					          				<td class="table-title" width="20%">门牌编号</td>
+					          				<td class="table-title" width="30%">会议室名称</td>
+					          				<td class="table-title" width="15%">容纳人数</td>
+					          				<td class="table-title" width="15%">当前状态</td>
+					          				<td class="table-title" width="20%">操作</td>
 								       	<tr>
         								{{#each response.data}}
 										<tr>
-					          				<td class="table-content" width="34%">{{council_name}}</td>
-					          				<td class="table-content" width="14%">{{council_room_name}}</td>
-					          				<td class="table-content" width="14%">{{start_time}}</td>
-					          				<td class="table-content" width="14%">{{stop_time}}</td>
-					          				<td class="table-content" width="14%">{{reserve_time}}</td>
-					          				<td class="table-content" width="10%">
-					          					<a href="#" class="item-link item-content"><b>查看详情  > </b></a>
+					          				<td class="table-content" width="20%">{{room_no}}</td>
+					          				<td class="table-content" width="30%">{{room_name}}</td>
+					          				<td class="table-content" width="15%">{{max_number}}</td>
+					          				<td class="table-content" width="15%">{{current_state}}</td>
+					          				<td class="table-content" width="20%">
+					          					<a href="#" class="item-link item-content"><b>查看详情&nbsp;&lt;&nbsp;</b></a>
 											</td>
 								       	<tr>
         								{{/each}}
 								    </table>
 									{{else}}
-										<p>当前没有预定的会议！</p>
+										<p>当前没有可用的会议室！</p>
 									{{/if}}
 								</form>
 				            </div>

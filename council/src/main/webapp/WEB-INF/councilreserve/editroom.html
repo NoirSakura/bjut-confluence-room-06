@@ -1,0 +1,183 @@
+<div class="navbar">
+	<div class="navbar-inner">
+    	<div class="left sliding">
+    		<a href="#" onClick="goIndex()" class="link"> 
+	    			<i class="icon icon-back"></i><span>返回首页</span></a>
+    	</div>
+      	<div class="center sliding">添加会议室</div>
+      	<div class="right" style="margin:100px">
+      		{{loginInfo.privilege.name}},&nbsp;
+      		<a href="#" class="item-link item-content" data-context-name="login_info">{{loginInfo.account}}</a>
+      	</div>
+    </div>
+</div> 
+<div class="pages">
+	<!-- 添加会议室-->
+  	<div data-page="editroom" class="page">
+  		<div class="page-content">
+    		<div class="content-block">
+  				<!-- 主体部分-->
+    			<div class="content-block-inner">
+     				<div class="row">
+						<!-- 侧边导航栏-->
+						<div class="col-20">
+							<div class="list-block">
+							  	<ul>
+							    	<li class="accordion-item"><a href="#" class="item-content item-link">
+							        	<div class="item-inner">
+							          		<div class="item-title"><b>个人中心</b></div>
+							        	</div></a>
+								      	<div class="accordion-item-content">
+								        	<div class="content-block">
+								          		<ul>
+								          			<li><a href="#" class="item-content item-link" onclick="goIndex()">&gt;&nbsp;最新通知</a></li>
+								          			<li><a href="#" class="item-content item-link" onclick="goMyReservations()">&gt;&nbsp;我的预定</a></li>
+								          			<li><a href="#" class="item-content item-link" onclick="goMyCouncils()">&gt;&nbsp;我的会议</a></li>
+								          		</ul>
+								        	</div>
+			      						</div>
+		    						</li>
+								    <li class="accordion-item"><a href="#" class="item-content item-link">
+										<div class="item-inner">
+								        	<div class="item-title "><b>人员管理</b></div>
+									    </div></a>
+								      	<div class="accordion-item-content">
+								        	<div class="content-block">
+								          		<ul>
+								          			<li><a href="stuffmanage/departmanage" class="item-content item-link">&gt;&nbsp;部门管理</a></li>
+								          			<li><a href="stuffmanage/staffreg" class="item-content item-link">&gt;&nbsp;员工注册</a></li>
+								          			<li><a href="stuffmanage/regexam" class="item-content item-link">&gt;&nbsp;注册审批</a></li>
+								          			<li><a href="stuffmanage/staffsearch" class="item-content item-link">&gt;&nbsp;搜索员工</a></li>
+								          		</ul>
+								        	</div>
+								      	</div>
+								    </li>
+								    <li class="accordion-item"><a href="#" class="item-content item-link">
+										<div class="item-inner">
+								        	<div class="item-title"><b>会议预定</b></div>
+									    </div></a>
+								      	<div class="accordion-item-content">
+								        	<div class="content-block">
+								          		<ul>
+								          			<li><p class="recent-page-href">&gt;&nbsp;添加会议室&nbsp;&lt;</p></li>
+								          			<li><a href="councilreserve/checkroom" class="item-content item-link">&gt;&nbsp;查看会议室</a></li>
+								          			<li><a href="councilreserve/reserve" class="item-content item-link">&gt;&nbsp;预定会议</a></li>
+								          			<li><a href="councilreserve/checkcouncil" class="item-content item-link">&gt;&nbsp;搜索会议</a></li>
+								          		</ul>
+								        	</div>
+								      	</div>
+								    </li>
+		  						</ul>
+							</div>
+						</div>
+
+						<!-- 主体内容-->
+						<div class="col-80 page-content-body">
+			          		<div class="content-block">
+			          			<form>
+			          				<p>会议预定&nbsp;&nbsp;>&nbsp;&nbsp;添加会议室</p>
+				          			<fieldset>
+									    <legend><b style="font-size:24px;">会议室信息</b></legend>
+									    <div class="list-block">
+										     <ul>
+											    <li>
+											      <div class="item-content">
+											        <div class="item-inner">
+											          <div class="item-title label" id="room-no-label">门牌号:</div>
+											          <div class="item-input">
+											            <input id="roomNo" type="number" min="1" max="65535" placeholder="1-5位门牌号。例：101">
+											          </div>
+											        </div>
+											      </div>
+											    </li>
+											    <li>
+											      <div class="item-content">
+											        <div class="item-inner">
+											          <div class="item-title label" id="room-name-label">会议室名称:</div>
+											          <div class="item-input">
+											            <input id="roomName" type="text" maxlength="10" placeholder="1-10位名称。例：第一会议室">
+											          </div>
+											        </div>
+											      </div>
+											    </li>
+											    <li>
+											      <div class="item-content">
+											          <div class="item-inner">
+											          	  <div class="item-title label">最多容纳人数</div>
+											          	  <div class="item-input">
+												              <input id="maxRange" type="range" oninput="onRangeChange()" min="0" max="9" value="2" step="1">
+											          	  </div>
+											          	  <input id="rangeNumber" type="number" name="points" value="20" disabled="disabled"/>
+											          </div>
+											      </div>
+											    </li>
+											    <li>
+											      <div class="item-content">
+											        <div class="item-inner">
+											          <div class="item-title label">当前状态:</div>
+											          <div class="item-input">   	
+													 	<input type="radio" name="state" value ="0" checked=checked>启用 &nbsp; &nbsp; &nbsp; &nbsp; 
+														<input type="radio" name="state" value ="1">停用&nbsp; &nbsp; &nbsp; &nbsp; 
+														<input type="radio" name="state" value ="-1">删除
+											          </div>
+											        </div>
+											      </div>
+											    </li>
+											    
+											    <li>
+											      <div class="item-content">
+											        <div class="item-inner">
+											          <div class="item-title label">备注:</div>
+											          <div class="item-input description">
+											            <textarea id="note" maxlength="200" rows="5" cols="60" placeholder="200字以内的文字描述"></textarea>
+											          </div>
+											        </div>
+											      </div>
+											    </li>
+										    </ul>
+						     				<div class="row" style="padding-top:20px">
+												<div class="col-20"></div>
+												<div class="col-25">
+							                  			<a href="#" onClick="onAddRoom()" class="center button color-green">
+							                  				<b>添加</b>
+							                  			</a>
+							                  	</div>
+												<div class="col-5"></div>
+												<div class="col-25">
+							                  			<a href="#" onClick="onAddRoomReset()" class="center button color-red">
+							                  				<b>重置</b>
+							                  			</a>
+							                  	</div>
+												<div class="col-20"></div>
+							             	</div>
+										</div>
+									</fieldset>
+								</form>
+				            </div>
+				        </div>
+        
+					</div>
+				</div>
+
+	       		<!-- 页脚部分-->
+	        	<div class="row">
+	        		<div class="col-40"></div>
+	        		<div class="col-60">
+	        			<p class="systime">系统时间:</p>
+					</div>
+				</div>
+				<hr>
+				<div class="row">
+		       		<div class="col-30"></div>
+		       		<div class="col-10">
+		       			<img src="img/footer.png" width="90%" height="90%"/>
+		       		</div>
+			       	<div class="col-60">
+			      		<p>© 2017 BEIJING UNIVERSITY OF TECHNOLOGY.</p>
+			        	<p>All rights reserved Powered by Baker Fung</p>
+					</div>
+				</div>
+        	</div>
+       	</div>
+	</div>
+</div>
