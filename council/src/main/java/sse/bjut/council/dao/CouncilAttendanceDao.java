@@ -8,4 +8,5 @@ import sse.bjut.council.entity.CouncilAttendance;
 
 public interface CouncilAttendanceDao extends PagingAndSortingRepository<CouncilAttendance, Integer> {
 	List<CouncilAttendance> findByAttIdAndDelFlag(Integer attId, Boolean delFlag);
+	List<CouncilAttendance> findByCouncilIdAndDelFlag(Integer councilId, Boolean delFlag);
 }

@@ -11,5 +11,5 @@ public interface CouncilRoomDao extends PagingAndSortingRepository<CouncilRoom, 
 	CouncilRoom findByIdAndDelFlag(Integer id, Boolean delFlag);
 	CouncilRoom findByRoomNoAndDelFlag(Integer roomNo, Boolean delFlag);
 	CouncilRoom findByRoomNameAndDelFlag(String roomName, Boolean delFlag);
-	List<CouncilRoom> findByDelFlag(Boolean delFlag);
+	List<CouncilRoom> findByDelFlagAndStopFlag(Boolean delFlag,Short StopFlag);
 }

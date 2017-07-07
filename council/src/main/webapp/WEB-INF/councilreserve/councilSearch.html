@@ -4,7 +4,7 @@
     		<a href="#" onClick="goIndex()" class="link"> 
 	    			<i class="icon icon-back"></i><span>返回首页</span></a>
     	</div>
-      	<div class="center sliding">部门管理</div>
+      	<div class="center sliding">搜索会议</div>
       	<div class="right" style="margin:100px">
       		{{loginInfo.privilege.name}},&nbsp;{{loginInfo.account}}
       		<a href="#" class="item-link item-content" onClick="logout()">登出</a>
@@ -12,8 +12,8 @@
     </div>
 </div> 
 <div class="pages">
-	<!-- 部门管理-->
-  	<div data-page="departmanage" class="page">
+	<!-- 搜索会议-->
+  	<div data-page="councilsearch" class="page">
   		<div class="page-content">
     		<div class="content-block">
   				<!-- 主体部分-->
@@ -44,7 +44,7 @@
 								      	<div class="accordion-item-content">
 								        	<div class="content-block">
 								          		<ul>
-								          			<li><p class="recent-page-href">&gt;&nbsp;部门管理&nbsp;&lt;</p></li>
+								          			<li><a href="#" class="item-content item-link" onclick="goDepartManage()">&gt;&nbsp;部门管理</a></li>
 								          			<li><a href="#" class="item-content item-link" onclick="goStaffReg()">&gt;&nbsp;员工注册</a></li>
 								          			<li><a href="#" class="item-content item-link" onclick="goRegExam()">&gt;&nbsp;注册审批</a></li>
 								          			<li><a href="#" class="item-content item-link" onclick="goStaffSearch()">&gt;&nbsp;搜索员工</a></li>
@@ -62,7 +62,7 @@
 								          			<li><a href="#" class="item-content item-link" onclick="goAddRoom()">&gt;&nbsp;添加会议室</a></li>
 								          			<li><a href="#" class="item-content item-link" onclick="goCheckRooms()">&gt;&nbsp;查看会议室</a></li>
 								          			<li><a href="#" class="item-content item-link" onclick="goReserve()">&gt;&nbsp;预定会议</a></li>
-								          			<li><a href="#" class="item-content item-link" onclick="goCouncilSearch()">&gt;&nbsp;搜索会议</a></li>
+								          			<li><p class="recent-page-href">&gt;&nbsp;搜索会议&nbsp;&lt;</p></li>
 								          		</ul>
 								        	</div>
 								      	</div>
@@ -75,64 +75,73 @@
 						<div class="col-80 page-content-body">
 			          		<div class="content-block">
 			          			 <form>
-			          				 <p>人员管理&nbsp;&nbsp;>&nbsp;&nbsp;部门管理</p>
+			          				 <p>会议预定&nbsp;&nbsp;>&nbsp;&nbsp;搜索会议</p>
 			          				 <fieldset>
-									    <legend><b style="font-size:20px;">添加部门</b></legend>
+									    <legend><b style="font-size:20px;">搜索会议</b></legend>
 									    <div class="list-block" style="margin:10px">
 									      <ul>
 									        <li>
 									          <div class="item-content">
-									            <div id="depart-name-label" class="item-title label">部门名称</div>
 									            <div class="item-inner">
-												  <input id="departName" type="text" maxlength="10" placeholder="1-10位部门名。例：策划部">
-												</div>
+										            <div class="row" style="width:100%">
+										            	<div class="center col-10"><p id="name-label" style="margin:9px;font-weight:bold">姓名:</p></div>
+										            	<div class="col-40"><input id="name" type="text" maxlength="10" placeholder="员工姓名，例：张三"></div>
+										            	<div class="center col-10"><p id="account-label" style="margin:9px;font-weight:bold">账号:</p></div>
+										            	<div class="col-40" style="padding:0px"><input id="account" type="text" maxlength="30" placeholder="账户名，例：staff_01"></div>
+										            </div>
+											    </div>
 											  </div>
 										    </li>
 									        <li>
 									          <div class="item-content">
-									            <div class="item-title label">操作</div>
-									              <div class="row" style="width:100%">
-									                <div class="col-50"><a href="#" onClick="addDepart()" class="center button color-green"><b>添加</b></a></div>
-									                <div class="col-50"><a href="#" onClick="searchDepart()" class="center button color-blue"><b>查询</b></a></div>
-									              </div>
-									            <div class="item-inner">	
-												</div>
+									            <div class="item-inner">
+										            <div class="row" style="width:100%">
+										            	<div class="center col-10"><p style="margin:9px;font-weight:bold">状态:</p></div>
+										            	<div class="col-40" style="margin:9px;">
+														 	<input type="radio" name="state" value ="granted" checked=checked>已批准 &nbsp; &nbsp;
+															<input type="radio" name="state" value ="waiting">待审批&nbsp; &nbsp; 
+															<input type="radio" name="state" value ="stopped">已关闭
+														</div>
+										            	<div class="center col-10"><p style="margin:9px;font-weight:bold">操作:</p></div>
+									                	<div class="col-20" style="margin:7px;"><a href="#" onClick="staffSearch()" class="center button color-green"><b>查询</b></a></div>
+									                	<div class="col-20" style="margin:7px;"><a href="#" onClick="resetStaffSearch()" class="center button color-red"><b>重置</b></a></div>
+										            </div>
+											    </div>
 											  </div>
 										    </li>
 										  </ul>
 									    </div>
 									 </fieldset>
-									 <p></p>
-			          				 <p class="tabel-label">所有部门</p>
-			          				 {{#if response.active}}
-								     <table>
-										<tr>
-					          				<td class="table-title" width="15%">部门编号</td>
-					          				<td class="table-title" width="40%">部门名称</td>
-					          				<td class="table-title" width="45%">操作</td>
-								       	<tr>
-        								{{#each response.data}}
-										<tr>
-					          				
-					          				<td class="table-content" width="15%" id="depart-id-{{@index}}">{{depart_id}}</td>
-					          				<td class="table-content" width="40%">
-					          					<input type="text" id="depart-name-{{@index}}" maxlength="10" placeholder="1-10位部门名。例：策划部" value={{depart_name}} style="background:transparent;border:0px;text-align:center;color:#fff" readonly="true"/>
-					          					</td>
-					          				<td class="table-content" width="45%">
-					          					<div class="row">
-					          						<div class="col-10"></div>
-								                	<div class="col-25"><a href="#" id="button-edit-save-{{@index}}" class="center button color-green button-edit-save"><b>编辑</b></a></div>
-							          				<div hidden="true" id="label-{{@index}}" class="col-25"><a id="button-cancel-{{@index}}"  href="#" class="center button color-blue button-cancel"><b>取消</b></a></div>
-					          						<div class="col-25"><a href="#" id="button-delete-{{@index}}" class="center button color-red button-delete"><b>删除</b></a></div>
-					          						<div class="col-10"></div>
-					          					</div>
-											</td>
-								       	<tr>
-        								{{/each}}
-								     </table>
-									 {{else}}
-									    <p>未找到部门！</p>
-									 {{/if}}
+									 <p/>
+			          				 <p class="tabel-label">查询结果</p>
+				          				{{#if response.active}}
+									    <table>
+											<tr>
+						          				<td class="table-title" width="35%">会议名称</td>
+						          				<td class="table-title" width="15%">会议室名称</td>
+						          				<td class="table-title" width="10%">会议开始时间</td>
+						          				<td class="table-title" width="10%">会议结束时间</td>
+						          				<td class="table-title" width="10%">会议预定时间</td>
+						          				<td class="table-title" width="10%">预订者</td>
+						          				<td class="table-title" width="10%">操作</td>
+									       	<tr>
+	        								{{#each response.data}}
+											<tr>
+						          				<td class="table-content" width="35%">{{council_name}}</td>
+						          				<td class="table-content" width="15%">{{council_room_name}}</td>
+						          				<td class="table-content" width="10%">{{start_time}}</td>
+						          				<td class="table-content" width="10%">{{stop_time}}</td>
+						          				<td class="table-content" width="10%">{{reserve_time}}</td>
+						          				<td class="table-content" width="10%">{{reserve_name}}</td>
+						          				<td class="table-content" width="10%">
+						          					<a href="#" class="item-link item-content detail-link" id="index-{{council_id}}"><b>查看详情  > </b></a>
+												</td>
+									       	<tr>
+	        								{{/each}}
+									    </table>
+										{{else}}
+											<p>当前没有可用的会议！</p>
+										{{/if}}
 								 </form>
 				            </div>
 				        </div>

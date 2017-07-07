@@ -10,4 +10,5 @@ public interface CouncilInfoDao extends PagingAndSortingRepository<Council, Inte
 	List<Council> findByReserveIDAndState(Integer reserveID, Integer state);
 	List<Council> findByName(String name);
 	List<Council> findByCouncilRoomID(Integer CouncilRoomID);
+	List<Council> findByState(Integer state);
 }

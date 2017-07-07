@@ -5,7 +5,9 @@ package sse.bjut.council.util;
  * 
  * @author fht_6
  */
-public class NetStateEnum {
+public class NetState {
+	// 数据传输错误
+	public static final String NET_ERROR = "-1";
 	// 通过
 	public static final String NET_PASS = "0";
 	// 对象属性长度错误

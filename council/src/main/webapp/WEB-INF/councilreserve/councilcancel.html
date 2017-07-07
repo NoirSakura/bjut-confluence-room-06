@@ -1,10 +1,6 @@
 <div class="navbar">
 	<div class="navbar-inner">
-    	<div class="left sliding">
-    		<a href="#" onClick="goIndex()" class="link"> 
-	    			<i class="icon icon-back"></i><span>返回首页</span></a>
-    	</div>
-      	<div class="center sliding">我的预定</div>
+      	<div class="center sliding">撤销预定</div>
       	<div class="right" style="margin:100px">
       		{{loginInfo.privilege.name}},&nbsp;{{loginInfo.account}}
       		<a href="#" class="item-link item-content" onClick="logout()">登出</a>
@@ -12,8 +8,8 @@
     </div>
 </div> 
 <div class="pages">
-	<!-- 我的预定-->
-  	<div data-page="myreservations" class="page">
+	<!-- 撤销预定-->
+  	<div data-page="councilcancel" class="page">
   		<div class="page-content">
     		<div class="content-block">
   				<!-- 主体部分-->
@@ -30,9 +26,9 @@
 								      	<div class="accordion-item-content">
 								        	<div class="content-block">
 								          		<ul>
-								          			<li><a href="#" class="item-content item-link" onclick="goIndex()">最新通知</a></li>
-								          			<li><p class="recent-page-href">&gt;&nbsp;我的预定&nbsp;&lt;</p></li>
-								          			<li><a href="#" class="item-content item-link" onclick="goMyCouncils()">我的会议</a></li>
+								          			<li><a href="#" class="item-content item-link" onclick="goIndex()">&gt;&nbsp;最新通知</a></li>
+								          			<li><a href="#" class="item-content item-link" onclick="goMyReservations()">&gt;&nbsp;我的预定</a></li>
+								          			<li><a href="#" class="item-content item-link" onclick="goMyCouncils()">&gt;&nbsp;我的会议</a></li>
 								          		</ul>
 								        	</div>
 			      						</div>
@@ -75,35 +71,49 @@
 						<div class="col-80 page-content-body">
 			          		<div class="content-block">
 			          			<form>
-			          				<p>个人中心&nbsp;&nbsp;>&nbsp;&nbsp;我的预定</p>
-			          				<hr>
-			          				<p class="tabel-label">我预定的会议：</p>
-			          				{{#if response.active}}
-								    <table>
-										<tr>
-					          				<td class="table-title" width="34%">会议名称</td>
-					          				<td class="table-title" width="14%">会议室名称</td>
-					          				<td class="table-title" width="14%">会议开始时间</td>
-					          				<td class="table-title" width="14%">会议结束时间</td>
-					          				<td class="table-title" width="14%">会议预定时间</td>
-					          				<td class="table-title" width="10%">操作</td>
-								       	<tr>
-        								{{#each response.data}}
-										<tr>
-					          				<td class="table-content" width="34%">{{council_name}}</td>
-					          				<td class="table-content" width="14%">{{council_room_name}}</td>
-					          				<td class="table-content" width="14%">{{start_time}}</td>
-					          				<td class="table-content" width="14%">{{stop_time}}</td>
-					          				<td class="table-content" width="14%">{{reserve_time}}</td>
-					          				<td class="table-content" width="10%">
-					          					<a href="#" class="item-link item-content detail-link" id="index-{{council_id}}"><b>查看详情  > </b></a>
-											</td>
-								       	<tr>
-        								{{/each}}
-								    </table>
-									{{else}}
-										<p>当前没有预定的会议！</p>
-									{{/if}}
+			          				<p>会议预定&nbsp;&nbsp;>&nbsp;&nbsp;撤销预定</p>
+				          			<fieldset>
+									    <legend><b style="font-size:24px;">撤销预定</b></legend>
+									    <div class="list-block">
+										     <ul>
+											    <li>
+											      <div class="item-content">
+											        <div class="item-inner">
+											          <div class="item-title label">会议名称:</div>
+											          <div class="item-input" id="council-name">
+											            <input readonly="true" value={{response.data.council.council_name}} type="text">
+											          </div>
+											        </div>
+											      </div>
+											    </li>
+											    <li>
+											      <div class="item-content">
+											        <div class="item-inner">
+											          <div class="item-title label">撤销原因:</div>
+											          <div class="item-input description">
+											            <textarea id="cancel-reason" maxlength="100" rows="4" cols="60" placeholder="100字以内的文字描述"></textarea>
+											          </div>
+											        </div>
+											      </div>
+											    </li>
+										    </ul>
+						     				<div class="row" style="padding-top:20px">
+												<div class="col-10"></div>
+												<div class="col-30">
+							                  			<a href="#" onClick="onCancelReserve()" class="center button color-green">
+							                  				<b>确认</b>
+							                  			</a>
+							                  	</div>
+												<div class="col-20"></div>
+												<div class="col-30">
+							                  			<a href="councilreserve/councilinfo" data-context-name="dataCache" class="center button color-red">
+							                  				<b>返回</b>
+							                  			</a>
+							                  	</div>
+												<div class="col-10"></div>
+							             	</div>
+										</div>
+									</fieldset>
 								</form>
 				            </div>
 				        </div>
@@ -131,5 +141,14 @@
 				</div>
         	</div>
        	</div>
+		<div class="popover popover-about">
+		    <div class="popover-angle"></div>
+		    <div class="popover-inner">
+		      <div class="content-block">
+		        <p>About</p>
+		        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ac diam ac quam euismod porta vel a nunc. Quisque sodales scelerisque est, at porta justo cursus ac.</p>
+		      </div>
+		    </div>
+		</div>
 	</div>
 </div>

@@ -7,8 +7,10 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import sse.bjut.council.entity.Staff;
 
 public interface StaffInfoDao extends PagingAndSortingRepository<Staff, Integer>{
-	List<Staff> findByName(String name);
-	Staff findByEmail(String email);
-	Staff findByPhone(Integer phone);
-	List<Staff> findByNameAndDelFlag(String name, Boolean DelFlag);
+	Staff findByEmailAndDelFlag(String email, Boolean delFlag);
+	Staff findByPhoneAndDelFlag(String phone, Boolean delFlag);
+	List<Staff> findByNameAndDelFlag(String name, Boolean delFlag);
+	List<Staff> findByDepartIDAndDelFlagAndStateAndStopFlag(Integer departID, Boolean delFlag, Boolean state, Boolean stopFlag);
+	List<Staff> findByDelFlag(Boolean delFlag);
+	List<Staff> findByStateAndDelFlag(Boolean state, Boolean delFlag);
 }

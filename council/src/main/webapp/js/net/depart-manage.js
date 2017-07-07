@@ -44,34 +44,34 @@ function addDepart(){
 function searchDepart(){
 	var departName = $$('#departName').prop('value');
 	$$.ajax({  
-	url:"departmanage/listdepart",
-	cache:false,
-	data:"?depart_name="+departName,
-	timeout:10000,
-	type:"GET",
-	dataType:'json',
-    async:true,
-	success:function(data) {
-		/// 为页面缓存添加信息
-		if(data['executeCode'] == 0){
-			Template7.data.dataCache.response.active = false;
+		url:"departmanage/listdepart",
+		cache:false,
+		data:"depart_name="+departName,
+		timeout:10000,
+		type:"GET",
+		dataType:'json',
+	    async:true,
+		success:function(data) {
+			/// 为页面缓存添加信息
+			if(data['executeCode'] == 0){
+				Template7.data.dataCache.response.active = false;
+			}
+			else{
+				Template7.data.dataCache.response.active = true;
+			}
+			
+			Template7.data.dataCache.response.data = data['data'];
+			mainView.router.load({
+				url:'staffmanage/departmanage',
+				contextName:'dataCache',
+				reload:true
+			});
+			$$('#departName').prop('value',departName);
+		},
+		error: function(xhr,status,error){ 
+			 myApp.alert('网络错误：'+error,'错误');
 		}
-		else{
-			Template7.data.dataCache.response.active = true;
-		}
-		
-		Template7.data.dataCache.response.data = data['data'];
-		mainView.router.load({
-			url:'staffmanage/departmanage',
-			contextName:'dataCache',
-			reload:true
-		});
-		$$('#departName').prop('value',departName);
-	},
-	error: function(xhr,status,error){ 
-		 myApp.alert('网络错误：'+error,'错误');
-		}
-});
+	});
 }
 
 function listDepart(){

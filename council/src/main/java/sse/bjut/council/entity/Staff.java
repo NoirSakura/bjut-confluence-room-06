@@ -27,7 +27,7 @@ public class Staff implements Serializable{
     // ENTITY DATA FIELDS
     //-----------------------------------------------
     @Column(name="depart_id", nullable=false,length=4)
-	String departID;
+    Integer departID;
 
     @Column(name="email", nullable=false, length=30)
 	String email;
@@ -36,7 +36,7 @@ public class Staff implements Serializable{
 	String name;
     
     @Column(name="phone", nullable=false, length=13)
-	Integer phone;
+    String phone;
     
     @Column(name="state", nullable=false)
 	Boolean state = false;
@@ -63,11 +63,11 @@ public class Staff implements Serializable{
 		this.id = id;
 	}
 
-	public String getDepartID() {
+	public Integer getDepartID() {
 		return departID;
 	}
 
-	public void setDepartID(String departID) {
+	public void setDepartID(Integer departID) {
 		this.departID = departID;
 	}
 
@@ -87,11 +87,11 @@ public class Staff implements Serializable{
 		this.name = name;
 	}
 
-	public Integer getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(Integer phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 

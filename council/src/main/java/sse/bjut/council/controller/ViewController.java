@@ -38,8 +38,23 @@ public class ViewController {
 	public String departManage() {
 		return "staffmanage/departmanage";
 	}
+
+	@RequestMapping("/staffmanage/staffreg")
+	public String staffReg() {
+		return "staffmanage/staffreg";
+	}
 	
-	// 会议预定
+	@RequestMapping("/staffmanage/regexam")
+	public String regExam() {
+		return "staffmanage/regexam";
+	}
+	
+	@RequestMapping("/staffmanage/staffsearch")
+	public String staffSearch() {
+		return "staffmanage/staffsearch";
+	}
+	
+	// 会议预定	
 	@RequestMapping("/councilreserve/addroom")
 	public String addroom() {
 		return "councilreserve/addroom";
@@ -53,5 +68,20 @@ public class ViewController {
 	@RequestMapping("/councilreserve/reserve")
 	public String reserve() {
 		return "councilreserve/reserve";
+	}
+
+	@RequestMapping("/councilreserve/roominfo")
+	public String roominfo() {
+		return "councilreserve/roominfo";
+	}
+	
+	@RequestMapping("/councilreserve/councilinfo")
+	public String councilInfo() {
+		return "councilreserve/councilinfo";
+	}
+	
+	@RequestMapping("/councilreserve/councilcancel")
+	public String councilCancel() {
+		return "councilreserve/councilcancel";
 	}
 }

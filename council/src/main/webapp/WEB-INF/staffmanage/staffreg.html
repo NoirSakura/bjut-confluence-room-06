@@ -4,7 +4,7 @@
     		<a href="#" onClick="goIndex()" class="link"> 
 	    			<i class="icon icon-back"></i><span>返回首页</span></a>
     	</div>
-      	<div class="center sliding">预定会议</div>
+      	<div class="center sliding">员工注册</div>
       	<div class="right" style="margin:100px">
       		{{loginInfo.privilege.name}},&nbsp;{{loginInfo.account}}
       		<a href="#" class="item-link item-content" onClick="logout()">登出</a>
@@ -12,8 +12,8 @@
     </div>
 </div> 
 <div class="pages">
-	<!-- 预定会议-->
-  	<div data-page="reserve" class="page">
+	<!-- 员工注册-->
+  	<div data-page="staffreg" class="page">
   		<div class="page-content">
     		<div class="content-block">
   				<!-- 主体部分-->
@@ -45,7 +45,7 @@
 								        	<div class="content-block">
 								          		<ul>
 								          			<li><a href="#" class="item-content item-link" onclick="goDepartManage()">&gt;&nbsp;部门管理</a></li>
-								          			<li><a href="#" class="item-content item-link" onclick="goStaffReg()">&gt;&nbsp;员工注册</a></li>
+								          			<li><p class="recent-page-href">&gt;&nbsp;员工注册&nbsp;&lt;</p></li>
 								          			<li><a href="#" class="item-content item-link" onclick="goRegExam()">&gt;&nbsp;注册审批</a></li>
 								          			<li><a href="#" class="item-content item-link" onclick="goStaffSearch()">&gt;&nbsp;搜索员工</a></li>
 								          		</ul>
@@ -61,8 +61,8 @@
 								          		<ul>
 								          			<li><a href="#" class="item-content item-link" onclick="goAddRoom()">&gt;&nbsp;添加会议室</a></li>
 								          			<li><a href="#" class="item-content item-link" onclick="goCheckRooms()">&gt;&nbsp;查看会议室</a></li>
-								          			<li><p class="recent-page-href">&gt;&nbsp;预定会议&nbsp;&lt;</p></li>
-								          			<li><a href="#" class="item-content item-link" onclick="goCouncilSearch()">&gt;&nbsp;查看会议室</a></li>
+								          			<li><a href="#" class="item-content item-link" onclick="goReserve()">&gt;&nbsp;预定会议</a></li>
+								          			<li><a href="#" class="item-content item-link" onclick="goCouncilSearch()">&gt;&nbsp;搜索会议</a></li>
 								          		</ul>
 								        	</div>
 								      	</div>
@@ -75,17 +75,17 @@
 						<div class="col-80 page-content-body">
 			          		<div class="content-block">
 			          			<form>
-			          				<p>预定会议&nbsp;&nbsp;>&nbsp;&nbsp;预定会议</p>
+			          				<p>人员管理&nbsp;&nbsp;>&nbsp;&nbsp;员工注册</p>
 				          			<fieldset>
-									    <legend><b style="font-size:20px;">会议信息</b></legend>
+									    <legend><b style="font-size:20px;">员工信息</b></legend>
 									    <div class="list-block">
 										     <ul>
 											    <li>
 											      <div class="item-content">
 											        <div class="item-inner">
-											          <div class="item-title label" id="council-name-label">会议名称:</div>
+											          <div class="item-title label" id="name-label">姓名:</div>
 											          <div class="item-input">
-											            <input id="council-name" type="text" maxlength="45" placeholder="1-45位名称，例：第一次会议">
+											            <input id="name" type="text" maxlength="10" placeholder="1-10位员工姓名，例：张三">
 											          </div>
 											        </div>
 											      </div>
@@ -94,9 +94,9 @@
 											    <li>
 											      <div class="item-content">
 											        <div class="item-inner">
-											          <div class="item-title label" id="attendance-label">预计参加人数:</div>
+											          <div class="item-title label" id="account-label">账户名:</div>
 											          <div class="item-input">
-											            <input id="attendance" type="number" min="1" max="10000" placeholder="1-5位参会人数。例：50">
+											            <input id="account" type="text" maxlength="30" placeholder="6-30位账户名。以字母开头只可包含字母数字和下划线，例：staff_01">
 											          </div>
 											        </div>
 											      </div>
@@ -105,29 +105,42 @@
 											    <li>
 											      <div class="item-content">
 											        <div class="item-inner">
-											          <div class="item-title label" id="start-time-label">预计开始时间</div>
+											          <div class="item-title label" id="password-label">密码:</div>
 											          <div class="item-input">
-											            <input id="start-time" type="datetime-local">
+											            <input id="password" type="password" maxlength="30" placeholder="6-30位密码">
 											          </div>
 											        </div>
 											      </div>
 											    </li>
+											    
 											    <li>
 											      <div class="item-content">
 											        <div class="item-inner">
-											          <div class="item-title label" id="end-time-label">预计结束时间</div>
+											          <div class="item-title label" id="password-confirm-label">确认密码:</div>
 											          <div class="item-input">
-											            <input id="end-time" type="datetime-local">
+											            <input id="password-confirm" type="password" maxlength="30" placeholder="请重复输入密码">
 											          </div>
 											        </div>
 											      </div>
 											    </li>
+											    
 											    <li>
 											      <div class="item-content">
 											        <div class="item-inner">
-											          <div class="item-title label">会议说明:</div>
-											          <div class="item-input description">
-											            <textarea id="council_info" maxlength="200" rows="5" cols="60" placeholder="200字以内的文字描述"></textarea>
+											          <div class="item-title label" id="phone-label">联系电话:</div>
+											          <div class="item-input">
+											            <input id="phone" type="text" maxlength="11" placeholder="11位手机号。例：13445556677">
+											          </div>
+											        </div>
+											      </div>
+											    </li>
+											    
+											    <li>
+											      <div class="item-content">
+											        <div class="item-inner">
+											          <div class="item-title label" id="email-label">电子邮件:</div>
+											          <div class="item-input">
+											            <input id="email" type="text" maxlength="30" placeholder="电子邮件。例：x@xx.com">
 											          </div>
 											        </div>
 											      </div>
@@ -135,48 +148,32 @@
 											    
 											    <li>
 											      <a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="搜索部门">
-											        <select id="council-room-id" name="council-rooms">
-											        	{{#each response.data.room}}
-											          		<option value="{{room_id}}" selected>{{room_name}}</option>
+											        <!-- select -->
+											        <select id="depart_id" name="departs">
+											        	{{#each response.data}}
+											          		<option value="{{depart_id}}" selected>{{depart_name}}</option>
 				        								{{/each}}
 											        </select>
 											        <div class="item-content">
 											          <div class="item-inner" style="width:50%">
-											            <div class="item-title">会议室名称</div> :
+											            <!-- Select label -->
+											            <div class="item-title">部门</div> :
 											          </div>
 											        </div>
 											      </a>
 											    </li>
 											    
-											    <li>
-											    	<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="搜索员工">
-												        <select multiple maxlength="10000">
-												          {{#each response.data.depart}}
-												          <optgroup label="{{depart_name}}">
-												            {{#each staff}}
-												            <option >{{staff_name}}-{{staff_id}}</option>
-				        								    {{/each}}
-												          </optgroup>
-				        								  {{/each}}
-												        </select>
-												        <div class="item-content">
-												          <div class="item-inner attendance" style="width:50%">
-												            <div class="item-title">参会人员</div> :
-												          </div>
-												        </div>
-										       		</a>
-										        </li>
 										    </ul>
 						     				<div class="row" style="padding-top:20px">
 												<div class="col-20"></div>
 												<div class="col-25">
-							                  			<a href="#" onClick="onReserve()" class="center button color-green">
-							                  				<b>预定会议</b>
+							                  			<a href="#" onClick="onReg()" class="center button color-green">
+							                  				<b>注册</b>
 							                  			</a>
 							                  	</div>
 												<div class="col-5"></div>
 												<div class="col-25">
-							                  			<a href="#" onClick="onReserveReset()" class="center button color-red">
+							                  			<a href="#" onClick="onRegReset()" class="center button color-red">
 							                  				<b>重置</b>
 							                  			</a>
 							                  	</div>

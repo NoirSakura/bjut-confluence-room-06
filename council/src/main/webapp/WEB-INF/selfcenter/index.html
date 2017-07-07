@@ -2,8 +2,8 @@
 	<div class="navbar-inner">
       	<div class="center sliding">最新通知</div>
       	<div class="right" style="margin:100px">
-      		{{loginInfo.privilege.name}},&nbsp;
-      		<a href="#" class="item-link item-content" data-context-name="dataCache">{{loginInfo.account}}</a>
+      		{{loginInfo.privilege.name}},&nbsp;{{loginInfo.account}}
+      		<a href="#" class="item-link item-content" onClick="logout()">登出</a>
       	</div>
     </div>
 </div> 
@@ -48,10 +48,10 @@
 								      	<div class="accordion-item-content">
 								        	<div class="content-block">
 								          		<ul>
-								          			<li><a href="stuffmanage/departmanage" class="item-content item-link">&gt;&nbsp;部门管理</a></li>
-								          			<li><a href="stuffmanage/staffreg" class="item-content item-link">&gt;&nbsp;员工注册</a></li>
-								          			<li><a href="stuffmanage/regexam" class="item-content item-link">&gt;&nbsp;注册审批</a></li>
-								          			<li><a href="stuffmanage/staffsearch" class="item-content item-link">&gt;&nbsp;搜索员工</a></li>
+								          			<li><a href="#" class="item-content item-link" onclick="goDepartManage()">&gt;&nbsp;部门管理</a></li>
+								          			<li><a href="#" class="item-content item-link" onclick="goStaffReg()">&gt;&nbsp;员工注册</a></li>
+								          			<li><a href="#" class="item-content item-link" onclick="goRegExam()">&gt;&nbsp;注册审批</a></li>
+								          			<li><a href="#" class="item-content item-link" onclick="goStaffSearch()">&gt;&nbsp;搜索员工</a></li>
 								          		</ul>
 								        	</div>
 								      	</div>
@@ -64,9 +64,9 @@
 								        	<div class="content-block">
 								          		<ul>
 								          			<li><a href="#" class="item-content item-link" onclick="goAddRoom()">&gt;&nbsp;添加会议室</a></li>
-								          			<li><a href="councilreserve/checkroom" class="item-content item-link">&gt;&nbsp;查看会议室</a></li>
-								          			<li><a href="councilreserve/reserve" class="item-content item-link">&gt;&nbsp;预定会议</a></li>
-								          			<li><a href="councilreserve/checkcouncil" class="item-content item-link">&gt;&nbsp;搜索会议</a></li>
+								          			<li><a href="#" class="item-content item-link" onclick="goCheckRooms()">&gt;&nbsp;查看会议室</a></li>
+								          			<li><a href="#" class="item-content item-link" onclick="goReserve()">&gt;&nbsp;预定会议</a></li>
+								          			<li><a href="#" class="item-content item-link" onclick="goCouncilSearch()">&gt;&nbsp;搜索会议</a></li>
 								          		</ul>
 								        	</div>
 								      	</div>
@@ -83,6 +83,7 @@
 			          				<hr>
 			          				<p>上次登陆&nbsp;:&nbsp;{{loginInfo.last_login_time}}</p>
 			          				<p class="tabel-label">未来7天我要参加的会议:</p>
+									{{#if response.active}}
 								    <table>
 										<tr>
 					          				<td class="table-title" width="40%">会议名称</td>
@@ -91,72 +92,49 @@
 					          				<td class="table-title" width="15%">结束时间</td>
 					          				<td class="table-title" width="10%">操作</td>
 								       	<tr>
+        								{{#each response.data.mycouncil}}
 										<tr>
-					          				<td class="table-content" width="40%">三季度销售总结会</td>
-					          				<td class="table-content" width="20%">第一会议室</td>
-					          				<td class="table-content" width="15%">2013-11-20 09:00</td>
-					          				<td class="table-content" width="15%">2013-11-20 11:00</td>
+					          				<td class="table-content" width="40%">{{council_name}}</td>
+					          				<td class="table-content" width="20%">{{council_room_name}}</td>
+					          				<td class="table-content" width="15%">{{start_time}}</td>
+					          				<td class="table-content" width="15%">{{stop_time}}</td>
 					          				<td class="table-content" width="10%">
-					          					<a href="#" class="item-link item-content"><b>查看详情  > </b></a>
+					          					<a href="#" class="item-link item-content detail-link" id="index-{{council_id}}"><b>查看详情  > </b></a>
 											</td>
 								       	<tr>
-										<tr>
-					          				<td class="table-content" width="40%">三季度销售总结会</td>
-					          				<td class="table-content" width="20%">第一会议室</td>
-					          				<td class="table-content" width="15%">2013-11-20 09:00</td>
-					          				<td class="table-content" width="15%">2013-11-20 11:00</td>
-					          				<td class="table-content" width="10%">
-					          					<a href="#" class="item-link item-content"><b>查看详情  > </b></a>
-											</td>
-								       	<tr>
-										<tr>
-					          				<td class="table-content" width="40%">三季度销售总结会</td>
-					          				<td class="table-content" width="20%">第一会议室</td>
-					          				<td class="table-content" width="15%">2013-11-20 09:00</td>
-					          				<td class="table-content" width="15%">2013-11-20 11:00</td>
-					          				<td class="table-content" width="10%">
-					          					<a href="#" class="item-link item-content"><b>查看详情  > </b></a>
-											</td>
-								       	<tr>
+        								{{/each}}
 								    </table>
+									{{else}}
+										<p>当前没有取消的会议！</p>
+									{{/if}}
 									<p/>
 			          				<p class="tabel-label">已取消的会议:</p>
+									{{#if response.active}}
 								    <table>
 										<tr>
-					          				<td class="table-title" width="40%">会议名称</td>
+					          				<td class="table-title" width="30%">会议名称</td>
 					          				<td class="table-title" width="20%">会议室</td>
 					          				<td class="table-title" width="15%">起始时间</td>
 					          				<td class="table-title" width="15%">结束时间</td>
+					          				<td class="table-title" width="10%">取消原因</td>
 					          				<td class="table-title" width="10%">操作</td>
 								       	<tr>
+        								{{#each response.data.cancel}}
 										<tr>
-					          				<td class="table-content" width="40%">三季度销售总结会</td>
-					          				<td class="table-content" width="20%">第一会议室</td>
-					          				<td class="table-content" width="15%">2013-11-20 09:00</td>
-					          				<td class="table-content" width="15%">2013-11-20 11:00</td>
+					          				<td class="table-content" width="30%">{{council_name}}</td>
+					          				<td class="table-content" width="20%">{{council_room_name}}</td>
+					          				<td class="table-content" width="15%">{{start_time}}</td>
+					          				<td class="table-content" width="15%">{{end_time}}</td>
+					          				<td class="table-content" width="10%">{{cancel_reason}}</td>
 					          				<td class="table-content" width="10%">
-					          					<a href="#" class="item-link item-content"><b>查看详情  > </b></a>
+					          					<a href="#" class="item-link item-content detail-link" id="index-{{council_id}}"><b>查看详情  > </b></a>
 											</td>
 								       	<tr>
-										<tr>
-					          				<td class="table-content" width="40%">三季度销售总结会</td>
-					          				<td class="table-content" width="20%">第一会议室</td>
-					          				<td class="table-content" width="15%">2013-11-20 09:00</td>
-					          				<td class="table-content" width="15%">2013-11-20 11:00</td>
-					          				<td class="table-content" width="10%">
-					          					<a href="#" class="item-link item-content"><b>查看详情  > </b></a>
-											</td>
-								       	<tr>
-										<tr>
-					          				<td class="table-content" width="40%">三季度销售总结会</td>
-					          				<td class="table-content" width="20%">第一会议室</td>
-					          				<td class="table-content" width="15%">2013-11-20 09:00</td>
-					          				<td class="table-content" width="15%">2013-11-20 11:00</td>
-					          				<td class="table-content" width="10%">
-					          					<a href="#" class="item-link item-content"><b>查看详情  > </b></a>
-											</td>
-								       	<tr>
+        								{{/each}}
 								    </table>
+									{{else}}
+										<p>当前没有取消的会议！</p>
+									{{/if}}
 								</form>
 				            </div>
 				        </div>

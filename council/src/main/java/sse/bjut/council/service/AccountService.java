@@ -1,18 +1,24 @@
 package sse.bjut.council.service;
 
+import java.util.Date;
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import sse.bjut.council.dao.LoginInfoDao;
+import sse.bjut.council.dao.StaffInfoDao;
 import sse.bjut.council.entity.LoginInfo;
+import sse.bjut.council.entity.Staff;
 import sse.bjut.council.util.*;
 
 @Service
 public class AccountService {
 	@Autowired 
 	LoginInfoDao loginInfoDao;
+	
+	@Autowired 
+	StaffInfoDao staffInfoDao;
 	
 	/**
 	 * @brief 用用户名和密码登陆
@@ -35,22 +41,27 @@ public class AccountService {
 		// 2 不存在
 		// 3 已经被删除
 		if(account.length() < 0 || account.length() > 30){
-			executeCode.append(NetStateEnum.NET_WRONG_LENGTH);
+			executeCode.append(NetState.NET_WRONG_LENGTH);
 			executeResult.append("账号长度错误\n");
 		}
 		else{
 			loginInfo = loginInfoDao.findByAccountAndPrivilege(account, privilege);
 			if(loginInfo == null){
-				executeCode.append(NetStateEnum.NET_NOT_EXIST);
+				executeCode.append(NetState.NET_NOT_EXIST);
 				executeResult.append("账号不存在\n");
 			}
 			else{
 				if(loginInfo.getDelFlag() == true){
-					executeCode.append(NetStateEnum.NET_DELETED);
-					executeResult.append("账号已被删除\n");
+					executeCode.append(NetState.NET_DELETED);
+					if(staffInfoDao.findOne(loginInfo.getStaffId()).getStopFlag() == true){
+						executeResult.append("账号已被关闭\n");
+					}
+					else{
+						executeResult.append("账号正在审核\n");
+					}
 					loginInfo = null;
 				}
-				else executeCode.append(NetStateEnum.NET_PASS);
+				else executeCode.append(NetState.NET_PASS);
 			}
 		}	
 		
@@ -59,18 +70,18 @@ public class AccountService {
 		// 1 长度错误
 		// 2 密码错误
 		if(password.length() < 6 || account.length() > 30){
-			executeCode.append(NetStateEnum.NET_WRONG_LENGTH);
+			executeCode.append(NetState.NET_WRONG_LENGTH);
 			executeResult.append("密码长度错误\n");
 			loginInfo = null;
 		}
 		else{
 			if(loginInfo != null && !loginInfo.getPassword().equals(password)) {
-				executeCode.append(NetStateEnum.NET_INCORRECT);
+				executeCode.append(NetState.NET_INCORRECT);
 				executeResult.append("密码错误\n");
 				loginInfo = null;
 			}
 			else{
-				executeCode.append(NetStateEnum.NET_PASS);
+				executeCode.append(NetState.NET_PASS);
 			}
 		}
 		
@@ -82,6 +93,8 @@ public class AccountService {
 			data.put("account", loginInfo.getAccount());
 			data.put("privilege", loginInfo.getPrivilege().toString());
 			data.put("last_login_time", DateProcess.dateFormat(loginInfo.getLastLoginTime()));
+			loginInfo.setLastLoginTime(new Date());
+			loginInfoDao.save(loginInfo);
 			res.setData(data);
 		}
 		return res;

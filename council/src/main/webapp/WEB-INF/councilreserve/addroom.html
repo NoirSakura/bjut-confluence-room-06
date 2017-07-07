@@ -6,8 +6,8 @@
     	</div>
       	<div class="center sliding">添加会议室</div>
       	<div class="right" style="margin:100px">
-      		{{loginInfo.privilege.name}},&nbsp;
-      		<a href="#" class="item-link item-content" data-context-name="login_info">{{loginInfo.account}}</a>
+      		{{loginInfo.privilege.name}},&nbsp;{{loginInfo.account}}
+      		<a href="#" class="item-link item-content" onClick="logout()">登出</a>
       	</div>
     </div>
 </div> 
@@ -44,10 +44,10 @@
 								      	<div class="accordion-item-content">
 								        	<div class="content-block">
 								          		<ul>
-								          			<li><a href="stuffmanage/departmanage" class="item-content item-link">&gt;&nbsp;部门管理</a></li>
-								          			<li><a href="stuffmanage/staffreg" class="item-content item-link">&gt;&nbsp;员工注册</a></li>
-								          			<li><a href="stuffmanage/regexam" class="item-content item-link">&gt;&nbsp;注册审批</a></li>
-								          			<li><a href="stuffmanage/staffsearch" class="item-content item-link">&gt;&nbsp;搜索员工</a></li>
+								          			<li><a href="#" class="item-content item-link" onclick="goDepartManage()">&gt;&nbsp;部门管理</a></li>
+								          			<li><a href="#" class="item-content item-link" onclick="goStaffReg()">&gt;&nbsp;员工注册</a></li>
+								          			<li><a href="#" class="item-content item-link" onclick="goRegExam()">&gt;&nbsp;注册审批</a></li>
+								          			<li><a href="#" class="item-content item-link" onclick="goStaffSearch()">&gt;&nbsp;搜索员工</a></li>
 								          		</ul>
 								        	</div>
 								      	</div>
@@ -60,9 +60,9 @@
 								        	<div class="content-block">
 								          		<ul>
 								          			<li><p class="recent-page-href">&gt;&nbsp;添加会议室&nbsp;&lt;</p></li>
-								          			<li><a href="councilreserve/checkroom" class="item-content item-link">&gt;&nbsp;查看会议室</a></li>
-								          			<li><a href="councilreserve/reserve" class="item-content item-link">&gt;&nbsp;预定会议</a></li>
-								          			<li><a href="councilreserve/checkcouncil" class="item-content item-link">&gt;&nbsp;搜索会议</a></li>
+								          			<li><a href="#" class="item-content item-link" onclick="goCheckRooms()">&gt;&nbsp;查看会议室</a></li>
+								          			<li><a href="#" class="item-content item-link" onclick="goReserve()">&gt;&nbsp;预定会议</a></li>
+								          			<li><a href="#" class="item-content item-link" onclick="goCouncilSearch()">&gt;&nbsp;搜索会议</a></li>
 								          		</ul>
 								        	</div>
 								      	</div>

@@ -46,7 +46,7 @@ public class Council implements Serializable{
 	String name;
     
     @Column(name="attendance", nullable=false, length=5)
-	String attendance;
+    Integer attendance;
     
     @Column(name="start_time", nullable=false)
 	Date startTime;
@@ -102,10 +102,10 @@ public class Council implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getAttendance() {
+	public Integer getAttendance() {
 		return attendance;
 	}
-	public void setAttendance(String attendance) {
+	public void setAttendance(Integer attendance) {
 		this.attendance = attendance;
 	}
 	public Date getStartTime() {

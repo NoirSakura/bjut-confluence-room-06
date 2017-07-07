@@ -10,12 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import sse.bjut.council.dao.DepartInfoDao;
-import sse.bjut.council.entity.Council;
-import sse.bjut.council.entity.CouncilAttendance;
-import sse.bjut.council.entity.CouncilRoom;
 import sse.bjut.council.entity.Depart;
-import sse.bjut.council.util.DateProcess;
-import sse.bjut.council.util.NetStateEnum;
+import sse.bjut.council.util.NetState;
 import sse.bjut.council.util.ResTemp;
 
 @Service
@@ -30,11 +26,11 @@ public class DepartService {
 			depart = new Depart();
 			depart.setDepartName(departName);
 			departInfoDao.save(depart);
-			res.setExecuteCode(NetStateEnum.NET_PASS);
+			res.setExecuteCode(NetState.NET_PASS);
 			res.setExecuteResult("success");
 		}
 		else{
-			res.setExecuteCode(NetStateEnum.NET_DUPLICATE);
+			res.setExecuteCode(NetState.NET_DUPLICATE);
 			res.setExecuteResult("该部门已存在");
 		}
 		return res;
@@ -44,19 +40,20 @@ public class DepartService {
 		ResTemp res = new ResTemp();
 		Depart depart = departInfoDao.findOne(departId);
 		if(depart != null && depart.getDelFlag() == false){
-			if(departInfoDao.findByDepartNameAndDelFlag(departName, false) != null){
-				res.setExecuteCode(NetStateEnum.NET_DUPLICATE);
+			Depart another = departInfoDao.findByDepartNameAndDelFlag(departName, false);
+			if(another != null && another.getId() != departId){
+				res.setExecuteCode(NetState.NET_DUPLICATE);
 				res.setExecuteResult("该部门名已存在");
 			}
 			else{
 				depart.setDepartName(departName);
 				departInfoDao.save(depart);
-				res.setExecuteCode(NetStateEnum.NET_PASS);
+				res.setExecuteCode(NetState.NET_PASS);
 				res.setExecuteResult("success");
 			}
 		}
 		else{
-			res.setExecuteCode(NetStateEnum.NET_NOT_EXIST);
+			res.setExecuteCode(NetState.NET_NOT_EXIST);
 			res.setExecuteResult("该部门不存在");
 		}
 		return res;
@@ -68,11 +65,11 @@ public class DepartService {
 		if(depart != null && depart.getDelFlag() == false){
 			depart.setDelFlag(true);
 			departInfoDao.save(depart);
-			res.setExecuteCode(NetStateEnum.NET_PASS);
+			res.setExecuteCode(NetState.NET_PASS);
 			res.setExecuteResult("success");
 		}
 		else{
-			res.setExecuteCode(NetStateEnum.NET_NOT_EXIST);
+			res.setExecuteCode(NetState.NET_NOT_EXIST);
 			res.setExecuteResult("该部门不存在");
 		}
 		return res;
